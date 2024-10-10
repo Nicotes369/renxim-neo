@@ -1,0 +1,69 @@
+/* assets/css/binary.css */
+
+/* General Binary Effect Styles */
+#binary-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 900;
+    pointer-events: none;
+}
+
+.binary-text {
+    position: absolute;
+    top: 0;
+    font-family: 'Courier New', Courier, monospace;
+    color: #00ff00;
+    opacity: 0.7;
+    font-size: 2.5rem; /* Increased font size for better visibility */
+    animation: drop 8s linear infinite;
+    will-change: transform;
+}
+
+@keyframes drop {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+/* Quantum Computer Mode Styles */
+body.quantum-mode #binary-container .binary-text {
+    font-size: 3rem; /* Further increased size for Quantum Computer mode */
+    animation-duration: 12s; /* Slower animation speed for enhanced visual effect */
+}
+
+/* Neon Effect for Random Columns */
+.neon-binary {
+    color: #ffffff;
+    text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 15px #ffffff;
+    opacity: 1;
+}
+
+@keyframes randomGlow {
+    0%, 100% {
+        text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff;
+    }
+    50% {
+        text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
+    }
+}
+
+/* Randomly Apply Neon Glow Effect */
+body.quantum-mode #binary-container .binary-text:nth-child(5n) {
+    color: #ffffff;
+    animation: randomGlow 3s infinite;
+    text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .binary-text {
+        font-size: 1.5rem;
+    }
+}
