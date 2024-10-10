@@ -1,81 +1,135 @@
+<!-- index.html - Enhanced Quantum Experience -->
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Renxim(RXM) - Quantum Meme</title>
+    <title>Renxim (RXM) — The Ultimate Quantum Meme Experience</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/binary.css">
-    <link rel="icon" href="assets/images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/quantum-particles.css">
+    <script src="assets/js/three.min.js"></script>
+    <script src="assets/js/quantum-particles.js"></script>
 </head>
-
 <body>
-    <header>
-        <div id="language-selection">
-            <label for="language-select">Language:</label>
-            <select id="language-select">
-                <option value="en">🇬/🇺 (English)</option>
-                <option value="ja" selected>🇯🇵 (日本語)</option>
-                <option value="zh">🇨🇳 (中文)</option>
-                <option value="hi">🇮🇳 (Hindi)</option>
-                <option value="fa">🇷🇴 (Persian)</option>
-                <option value="ar">🇸🇦 (Arabic)</option>
-                <option value="he">🇱🇷 (Hebrew)</option>
-                <option value="ru">🇷🇺 (Russian)</option>
-                <option value="de">🇩🇪 (German)</option>
-                <option value="it">🇮🇹 (Italian)</option>
-                <option value="es">🇪🇸 (Spanish)</option>
-                <option value="ko">🇰🇷 (Korean)</option>
-                <option value="qc">💻 (Quantum Computer)</option>
-            </select>
-        </div>
-        <h1 id="catchphrase">Renxim(RXM) — The Coolest Quantum Meme on the QL1 Ecosystem —</h1>
-    </header>
+    <!-- Language Selection -->
+    <div class="language-selector">
+        <select id="language-select">
+            <option value="en">🇬/🇱(English)</option>
+            <option value="ja" selected>🇯🇵(日本語)</option>
+            <option value="zh">🇨🇳(中文)</option>
+            <option value="hi">🇮🇳(Hindi)</option>
+            <option value="fa">🇮🇷(Persian)</option>
+            <option value="ar">🇸🇪(Arabic)</option>
+            <option value="he">🇳🇮(Hebrew)</option>
+            <option value="ru">🇷🇺(Russian)</option>
+            <option value="de">🇩🇪(German)</option>
+            <option value="it">🇮🇹(Italian)</option>
+            <option value="es">🇪🇸(Spanish)</option>
+            <option value="ko">🇰🇷(Korean)</option>
+            <option value="qc">🛠(Quantum Computer)</option>
+        </select>
+    </div>
 
-    <main id="main-content">
-        <section id="contract-address-section">
-            <p id="contract-address-title">Contract Address:</p>
-            <div id="contract-address-container">
-                <p id="contract-address">0xfE7Aa1F52633b0812bCAAa3fab4A4e2D3182Dbc4</p>
-                <button id="copy-address-button" onclick="copyAddress()">Copy</button>
+    <!-- Quantum Particle Background -->
+    <div id="quantum-particle-bg"></div>
+
+    <!-- Main Content -->
+    <div id="main-content">
+        <!-- Header Section -->
+        <header>
+            <div class="header-content">
+                <img src="assets/images/logo.png" alt="Renxim Logo" class="logo">
+                <h1 data-i18n="catchphrase" class="enhanced-glow">Renxim(RXM)</h1>
+                <h2 data-i18n="catchphrase-sub">The Coolest Quantum Meme on the QL1 Ecosystem</h2>
+                <p data-i18n="welcome-message" class="welcome-message">As an observer, you determine the future of Renxim.<br>Let’s collapse the wave function!</p>
+                <!-- Contract Address -->
+                <div class="contract-address-container">
+                    <span data-i18n="contract-address-label">Contract Address:</span>
+                    <div class="contract-address">
+                        <span id="contract-address">0xfE7Aa1F52633b0812bCAAa3fab4A4e2D3182Dbc4</span>
+                        <button onclick="copyAddress()" data-i18n="copy-button" class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <!-- Social Icons -->
+                <div class="social-icons">
+                    <a href="https://t.me/renximQL1" target="_blank" class="social-icon-link">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                    <a href="https://x.com/renxim666?s=21&t=Q_73za-RhI-hCOoflHh_gg" target="_blank" class="social-icon-link">
+                        <span class="x-logo fallback-font">&#x1d54f;</span>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2 data-i18n="about-heading">About Renxim(RXM)</h2>
+            <p data-i18n="about-description">
+                Renxim(RXM) is a cutting-edge meme coin developed by two experts, Ren and Xim.<br>
+                Inspired by Quantum Physics and Quantum Theory, it stands as the coolest entity on the QL1 Ecosystem.<br>
+                As a community-driven project, Renxim is capturing attention as the leading quantum meme coin.
+            </p>
+            <blockquote data-i18n="about-quote">
+                Currently, Renxim(RXM) exists in a superposition state, intertwining with the quantum universe.<br>
+                By joining as a new observer, you collapse this wave function and create a new reality of bright potential!
+            </blockquote>
+        </section>
+
+        <!-- Community Section -->
+        <section id="community">
+            <h2 data-i18n="community-heading">Community</h2>
+            <p data-i18n="community-message">
+                Join us in quantum entanglement and shape the future of Renxim through observation!
+            </p>
+            <div class="social-icons">
+                <a href="https://t.me/renximQL1" target="_blank" class="social-icon-link">
+                    <i class="fab fa-telegram"></i>
+                </a>
+                <a href="https://x.com/renxim666?s=21&t=Q_73za-RhI-hCOoflHh_gg" target="_blank" class="social-icon-link">
+                    <span class="x-logo fallback-font">&#x1d54f;</span>
+                </a>
             </div>
         </section>
 
-        <section id="about-section">
-            <h2 id="about-heading">About Renxim(RXM)</h2>
-            <p id="about-description">Renxim(RXM) is a cutting-edge meme coin developed by two experts, Ren and Xim, inspired by Quantum Physics and Quantum Theory. It is community-driven and stands out as the coolest entity on the QL1 Ecosystem.</p>
-        </section>
-
-        <section id="community-section">
-            <h2 id="community-heading">Community</h2>
-            <p id="community-message">Join us in quantum entanglement and determine the future of Renxim(RXM) through observation!</p>
-        </section>
-
-        <section id="faq-section">
-            <h2 id="faq-heading">FAQ</h2>
+        <!-- FAQ Section -->
+        <section id="faq">
+            <h2 data-i18n="faq-heading">FAQ</h2>
             <div class="faq-item">
-                <h3 class="faq-question">Q1: How can I purchase Renxim(RXM)?</h3>
-                <p class="faq-answer">A1: The current confirmed fact is that you can connect your wallet to QomSwap and purchase directly using the contract address listed above. However, in the quantum world, 'you are the observer, and you create reality.' This means that at any moment you desire, Renxim(RXM) can exist simultaneously on all major cryptocurrency exchanges, but until the wave function collapses, the possibilities are infinite. Which exchange Renxim(RXM) will be available on is a surprise until you observe it. Are you ready to start your observation?</p>
-            </div>
-            <div class="faq-item">
-                <h3 class="faq-question">Q2: When will RXM moon?</h3>
-                <p class="faq-answer">A2: From a quantum perspective, RXM already exists on the moon, Mars, and other galaxies. It all depends on whether you observe and participate!</p>
-            </div>
-            <div class="faq-item">
-                <h3 class="faq-question">Q3: Is investing in RXM safe?</h3>
-                <p class="faq-answer">A3: In the quantum world, everything exists in a superposition, and the future holds infinite possibilities. As Heisenberg's Uncertainty Principle states, it's impossible to predict with certainty whether RXM will become the top meme coin. However, somewhere in the multiverse, RXM has already established its position, and by participating, you may cause the wave of possibilities to converge into reality! Your observation could be the beginning of the next big hit...</p>
+                <h3 data-i18n="faq-q1">How can I purchase Renxim(RXM)?</h3>
+                <p data-i18n="faq-a1">
+                    Connect your wallet to QomSwap and purchase directly using the contract address listed above.<br>
+                    Remember, in the quantum world, "you are the observer, and you create reality."<br>
+                    The possibilities are infinite until observed. Start your observation now!
+                </p>
+                <a href="https://www.qomswap.com/info/tokens/0xfE7Aa1F52633b0812bCAAa3fab4A4e2D3182Dbc4?chainId=766" target="_blank" class="buy-button" data-i18n="buy-button">Buy on QomSwap</a>
             </div>
         </section>
+    </div>
 
-        <section id="buy-section">
-            <button id="buy-button">Buy on QomSwap</button>
-        </section>
-    </main>
+    <!-- Quantum Particle Script Activation -->
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            if (document.body.classList.contains('quantum-mode')) {
+                startQuantumParticles();
+            }
+        });
 
+        document.getElementById('language-select').addEventListener('change', function() {
+            if (this.value === 'qc') {
+                document.body.classList.add('quantum-mode');
+                startQuantumParticles();
+            } else {
+                document.body.classList.remove('quantum-mode');
+                stopQuantumParticles();
+            }
+        });
+    </script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/language.js"></script>
     <script src="assets/js/binary.js"></script>
+    <script src="assets/js/language.js"></script>
+    <script src="assets/js/quantum-interactions.js"></script>
 </body>
-
 </html>
