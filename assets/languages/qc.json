@@ -1,0 +1,26 @@
+// assets/languages/qc.json
+{
+  "catchphrase": "|0⟩ |1⟩ |0⟩ |1⟩ — |0⟩ |1⟩ |0⟩ |1⟩ |0⟩",
+  "welcomeMessage": "|1⟩ |0⟩ |1⟩ |0⟩ |1⟩ |0⟩",
+  "contractAddress": "|0⟩ |1⟩ |0⟩ |1⟩ |0⟩",
+  "copyButton": "|1⟩ |0⟩ |1⟩",
+  "aboutHeading": "|0⟩ |1⟩ |0⟩",
+  "aboutDescription": "|1⟩ |0⟩ |1⟩ |0⟩",
+  "aboutQuote": "|0⟩ |1⟩ |0⟩ |1⟩",
+  "timelineHeading": "|1⟩ |0⟩ |1⟩",
+  "keyMessageLabel": "|0⟩ |1⟩",
+  "keyMessage": "|1⟩ |0⟩ |1⟩",
+  "timelineQuestion": "|0⟩ |1⟩ |0⟩",
+  "communityHeading": "|1⟩ |0⟩",
+  "communityMessage": "|0⟩ |1⟩",
+  "faqHeading": "|1⟩",
+  "faqQ1": "|0⟩ |1⟩",
+  "faqA1": "|1⟩ |0⟩",
+  "buyButton": "|0⟩ |1⟩",
+  "faqQ2": "|1⟩ |0⟩",
+  "faqA2": "|0⟩ |1⟩",
+  "faqQ3": "|1⟩ |0⟩",
+  "faqA3": "|0⟩ |1⟩",
+  "disclaimer": "|1⟩ |0⟩ |1⟩ |0⟩",
+  "finalMessage": "|0⟩ |1⟩ |0⟩ |1⟩"
+}
