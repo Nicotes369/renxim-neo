@@ -1,74 +1,91 @@
-// assets/js/main.js
+/* assets/js/main.js */
 
-// Copy Contract Address Functionality
-function copyAddress() {
-    const addressElement = document.getElementById('contract-address');
-    const address = addressElement.innerText.trim();
-    navigator.clipboard.writeText(address).then(() => {
-        // Apply glow effect and show confirmation message
-        addressElement.classList.add('copied');
-        const confirmation = document.createElement('span');
-        confirmation.classList.add('copy-confirmation');
-        confirmation.innerText = ' コピーが完了しました！';
-        addressElement.parentElement.appendChild(confirmation);
-
-        // Remove glow effect and message after 2 seconds
-        setTimeout(() => {
-            addressElement.classList.remove('copied');
-            confirmation.remove();
-        }, 2000);
-    }).catch(err => {
-        alert('アドレスのコピーに失敗しました。');
-        console.error('Error copying text: ', err);
-    });
-}
-
-// Activate Quantum Mode
-function activateQuantumModeUI() {
-    document.body.classList.add('quantum-mode');
-    document.getElementById('main-content').style.display = 'none';
-}
-
-// Deactivate Quantum Mode
-function deactivateQuantumModeUI() {
-    document.body.classList.remove('quantum-mode');
-    document.getElementById('main-content').style.display = 'block';
-}
-
-// Language Select Event Listener
-const languageSelect = document.getElementById('language-select');
-if (languageSelect) {
-    languageSelect.addEventListener('change', (event) => {
-        const selectedLanguage = event.target.value;
-        if (selectedLanguage === 'qc') {
-            activateQuantumModeUI();
-        } else {
-            deactivateQuantumModeUI();
-        }
-    });
-}
-
-// Initialize UI based on selected language
 document.addEventListener('DOMContentLoaded', () => {
-    const currentLang = document.getElementById('language-select').value;
-    if (currentLang === 'qc') {
-        activateQuantumModeUI();
-    } else {
-        deactivateQuantumModeUI();
-    }
-});
+    // Initialize language selection
+    const languageSelect = document.getElementById('language-select');
+    const mainContent = document.getElementById('main-content');
 
-// Handle Observer for Quantum Mode Toggle
-const bodyClassObserver = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-        if (mutation.attributeName === 'class') {
-            if (document.body.classList.contains('quantum-mode')) {
-                activateQuantumModeUI();
-            } else {
-                deactivateQuantumModeUI();
-            }
-        }
+    languageSelect.addEventListener('change', () => {
+        const selectedLanguage = languageSelect.value;
+        changeLanguage(selectedLanguage);
     });
-});
 
-bodyClassObserver.observe(document.body, { attributes: true });
+    function changeLanguage(language) {
+        fetch(`assets/languages/${language}.json`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('catchphrase').innerText = data.catchphrase;
+                document.getElementById('contract-address-title').innerText = data.contractAddress;
+                document.getElementById('about-heading').innerText = data.aboutHeading;
+                document.getElementById('about-description').innerText = data.aboutDescription;
+                document.getElementById('community-heading').innerText = data.communityHeading;
+                document.getElementById('community-message').innerText = data.communityMessage;
+                document.getElementById('faq-heading').innerText = data.faqHeading;
+
+                const faqSection = document.getElementById('faq-section');
+                faqSection.innerHTML = '';
+                const faqQuestions = [
+                    { question: data.faqQ1, answer: data.faqA1 },
+                    { question: data.faqQ2, answer: data.faqA2 },
+                    { question: data.faqQ3, answer: data.faqA3 }
+                ];
+                faqQuestions.forEach(faq => {
+                    const faqItem = document.createElement('div');
+                    faqItem.classList.add('faq-item');
+                    const faqQuestion = document.createElement('h3');
+                    faqQuestion.classList.add('faq-question');
+                    faqQuestion.innerText = faq.question;
+                    const faqAnswer = document.createElement('p');
+                    faqAnswer.classList.add('faq-answer');
+                    faqAnswer.innerText = faq.answer;
+                    faqItem.appendChild(faqQuestion);
+                    faqItem.appendChild(faqAnswer);
+                    faqSection.appendChild(faqItem);
+                });
+
+                document.getElementById('buy-button').innerText = data.buyButton;
+                document.getElementById('finalMessage').innerText = data.finalMessage;
+            })
+            .catch(error => console.error('Error loading language file:', error));
+    }
+
+    // Quantum Computer mode toggle
+    const qcModeOption = document.querySelector('option[value="qc"]');
+    qcModeOption.addEventListener('click', () => {
+        document.body.classList.add('qc-mode');
+        activateQuantumMode();
+    });
+
+    function activateQuantumMode() {
+        const binaryContainer = document.createElement('div');
+        binaryContainer.classList.add('binary-container');
+        mainContent.appendChild(binaryContainer);
+
+        for (let i = 0; i < 50; i++) {
+            const binaryStream = document.createElement('div');
+            binaryStream.classList.add('binary-stream');
+            if (i % 10 === 0) {
+                binaryStream.classList.add('neon-stream');
+            }
+            binaryContainer.appendChild(binaryStream);
+        }
+    }
+
+    // Copy contract address to clipboard
+    const copyButton = document.getElementById('copy-address-button');
+    copyButton.addEventListener('click', copyAddress);
+
+    function copyAddress() {
+        const address = document.getElementById('contract-address').innerText;
+        navigator.clipboard.writeText(address)
+            .then(() => {
+                alert('Contract address copied to clipboard!');
+            })
+            .catch(err => {
+                console.error('Could not copy text: ', err);
+            });
+    }
+
+    // Default to English language
+    changeLanguage('en');
+});
