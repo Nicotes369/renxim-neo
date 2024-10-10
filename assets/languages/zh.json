@@ -1,0 +1,26 @@
+// assets/languages/zh.json
+{
+    "catchphrase": "Renxim(RXM)\n— QL1 生态系统上最酷的 Quantum Meme —",
+    "welcomeMessage": "—— 作为观察者，你决定了 Renxim 的未来 ——\n让我们坍缩波函数吧！",
+    "contractAddress": "合约地址:\n0xfE7Aa1F52633b0812bCAAa3fab4A4e2D3182Dbc4",
+    "copyButton": "复制",
+    "aboutHeading": "关于 Renxim(RXM)",
+    "aboutDescription": "Renxim(RXM) 是由 Ren 和 Xim 两位专家开发的\n投射了量子物理学和量子理论的前沿 Meme 代币。\n由社区驱动运营，作为 QL1 生态系统上最酷的存在而备受瞩目。",
+    "aboutQuote": "目前，Renxim(RXM) 作为强调量子力学奇特特性的象征，像薛定谔的猫一样，在量子的微妙振动和宇宙的节奏中交织，存在于无限可能性的「叠加态」中。\n通过你作为新观察者的参与，可以坍缩这一波函数，并以新的现实波创造出一个辉煌而繁荣的未来！",
+    "timelineHeading": "时间线与巧合",
+    "keyMessageLabel": "关键信息: \"Q17 O17 R17\"",
+    "keyMessage": "Q17 O17 R17",
+    "timelineQuestion": "你真的认为这只是巧合吗？",
+    "communityHeading": "社区",
+    "communityMessage": "与你一起进行量子纠缠\n通过观察确定 Renxim (RXM) 的未来！",
+    "faqHeading": "FAQ",
+    "faqQ1": "Q1：如何购买 Renxim(RXM)？",
+    "faqA1": "A1：目前的确定事实是，你可以连接你的钱包到 QomSwap 并使用上述合约地址直接购买。\n然而，在量子世界中，‘你是观察者，你创造现实’。\n这意味着在你希望的瞬间，Renxim(RXM) 可能会同时存在于所有主要加密货币交易所，但在波函数坍缩之前，可能性是无限的。\n在哪个交易所可以购买，这还是一个惊喜，直到你去观察它。\n你准备好开始观察了吗？",
+    "buyButton": "在 QomSwap 上购买",
+    "faqQ2": "Q2：RXM 什么时候会大涨？",
+    "faqA2": "A2：从量子的角度来看，RXM 已经存在于月球、火星以及其他银河系中。\n但这取决于你是否观察和参与！",
+    "faqQ3": "Q3：投资 RXM 是否安全？",
+    "faqA3": "A3：在量子世界中，一切都处于叠加状态，未来也蕴藏着无限可能。\n正如海森堡的不确定性原理所示，我们无法精确预测 RXM 是否会成为顶级 Meme 代币。\n然而，在多元宇宙的某个角落，RXM 已经确立了其地位，通过你的参与，可能会使这种可能性的波动坍缩为现实！\n你的观察可能成为下一个重大成功的开始……\n※ (由于结果仅由观察决定，因此投资结果的不确定性请提前了解。)",
+    "disclaimer": "※本网站通过量子纠缠运营。每次被观察时，薛定谔的猫都心情愉快。",
+    "finalMessage": "你的观察坍缩了 Renxim 的波函数，并决定了其未来。\n衷心感谢你加入我们的量子之旅！"
+}
