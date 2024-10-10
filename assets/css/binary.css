@@ -1,69 +1,87 @@
 /* assets/css/binary.css */
 
-/* General Binary Effect Styles */
-#binary-container {
+/* General binary effect styling for Quantum Computer mode */
+
+@keyframes binary-fall {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 1;
+    }
+}
+
+.binary-stream {
     position: fixed;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100vh;
+    background-color: #00ff99;
+    animation: binary-fall linear infinite;
+    animation-duration: calc(10s + (20 * (1vh)));
+}
+
+/* Slower and slightly more pronounced binary effect for selected streams */
+.neon-stream {
+    background-color: #ffffff;
+    animation-duration: calc(15s + (25 * (1vh)));
+}
+
+/* Randomly placed binary columns for background effect */
+body.qc-mode::before {
+    content: '';
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+body.qc-mode .binary-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
-    z-index: 900;
     pointer-events: none;
 }
 
-.binary-text {
+.binary-container .binary-stream {
     position: absolute;
-    top: 0;
-    font-family: 'Courier New', Courier, monospace;
-    color: #00ff00;
+    width: 1.5px;
+    height: 100%;
+    background-color: #00ff99;
+    animation: binary-fall linear infinite;
+}
+
+.binary-container .neon-stream {
+    background-color: #ffffff;
+}
+
+/* Styling to provide white neon effect mixed with regular binary columns */
+body.qc-mode .binary-stream:nth-child(odd) {
+    animation-duration: 20s;
+}
+
+body.qc-mode .binary-stream:nth-child(even) {
+    animation-duration: 25s;
+}
+
+/* Additional tweaks for enhanced visual appeal */
+body.qc-mode .binary-stream {
     opacity: 0.7;
-    font-size: 2.5rem; /* Increased font size for better visibility */
-    animation: drop 8s linear infinite;
-    will-change: transform;
 }
 
-@keyframes drop {
-    0% {
-        transform: translateY(-100%);
-    }
-    100% {
-        transform: translateY(100vh);
-    }
-}
-
-/* Quantum Computer Mode Styles */
-body.quantum-mode #binary-container .binary-text {
-    font-size: 3rem; /* Further increased size for Quantum Computer mode */
-    animation-duration: 12s; /* Slower animation speed for enhanced visual effect */
-}
-
-/* Neon Effect for Random Columns */
-.neon-binary {
-    color: #ffffff;
-    text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 15px #ffffff;
+body.qc-mode .binary-stream:hover {
     opacity: 1;
+    animation-duration: 15s;
 }
 
-@keyframes randomGlow {
-    0%, 100% {
-        text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff;
-    }
-    50% {
-        text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
-    }
-}
-
-/* Randomly Apply Neon Glow Effect */
-body.quantum-mode #binary-container .binary-text:nth-child(5n) {
-    color: #ffffff;
-    animation: randomGlow 3s infinite;
-    text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .binary-text {
-        font-size: 1.5rem;
-    }
+/* Specific color transition for mixed neon streams */
+body.qc-mode .neon-stream {
+    opacity: 1;
 }
