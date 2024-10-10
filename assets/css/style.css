@@ -1,359 +1,155 @@
 /* assets/css/style.css */
 
-/* General Styles */
 body {
+    font-family: 'Arial', sans-serif;
+    background-color: #0d0d0d;
+    color: #e6e6e6;
+    line-height: 1.6;
     margin: 0;
     padding: 0;
-    font-family: 'Orbitron', 'Noto Sans', 'Arial Unicode MS', sans-serif;
-    background-color: #04040c; /* Fallback color */
-    color: #ffffff;
-    direction: ltr; /* Default direction */
-    overflow: auto; /* Enable scrolling globally */
 }
 
-/* Enhanced Glow Effect for Catchphrase */
-.enhanced-glow {
-    text-shadow: 0 0 20px #00ccff, 0 0 30px #00ccff, 0 0 40px #0099cc;
-    animation: pulseGlow 2s infinite;
-    font-size: 3rem; /* Increased size for better visibility */
-}
-
-@keyframes pulseGlow {
-    0% {
-        text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #0099cc;
-    }
-    50% {
-        text-shadow: 0 0 20px #00ccff, 0 0 30px #00ccff, 0 0 40px #0099cc;
-    }
-    100% {
-        text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #0099cc;
-    }
-}
-
-/* Language Selector */
-.language-selector {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    z-index: 1001;
-}
-
-#language-select {
-    padding: 10px 15px;
-    font-size: 1.25rem; /* Increased font size for better accessibility */
-    background-color: #ffffff;
-    color: #000000;
-    border: 1px solid #cccccc;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-#language-select:hover {
-    background-color: #f0f0f0;
-}
-
-/* Header Styles */
 header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 120px 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    position: relative;
-    z-index: 1000;
-}
-
-.logo {
-    width: 180px;
-    margin-bottom: 30px;
-}
-
-.header-content h1 {
-    font-size: 4rem;
-    margin-bottom: 20px;
     text-align: center;
-    color: #00ccff; /* Maintain glow color */
-    text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #0099cc;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-bottom: 2px solid #4285f4;
 }
 
-.header-content p {
-    font-size: 1.75rem;
-    margin-bottom: 40px;
-    text-align: center;
-    color: #ffffff;
+#language-selection {
+    margin-bottom: 10px;
 }
 
-/* Enhanced Catchphrase Glow */
-.enhanced-glow:hover {
-    text-shadow: 0 0 30px #00ccff, 0 0 40px #00ccff, 0 0 50px #00ccff;
-}
-
-/* Contract Address Styles - Improved */
-.contract-address-container {
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-.contract-address {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    color: #ffffff;
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 15px 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    position: relative;
-}
-
-.contract-address span:first-child {
-    margin-right: 15px;
-    font-weight: bold;
-    font-size: 1.25rem;
-}
-
-.contract-address button {
-    padding: 12px 25px;
-    font-size: 1.25rem;
-    cursor: pointer;
-    background-color: #1e90ff;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    margin-left: 15px;
-    transition: background-color 0.3s ease;
-}
-
-.contract-address button:hover {
-    background-color: #63b8ff;
-}
-
-/* Confirmation Message Styling */
-.copy-confirmation {
-    color: #ffdd57; /* Yellow color matching 'about-quote' */
-    margin-left: 15px;
-    font-weight: bold;
-    animation: fadeOut 2s forwards;
-}
-
-@keyframes fadeOut {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
-}
-
-/* Social Icons */
-.social-icons {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
-}
-
-.social-icons a {
-    color: #ffffff;
-    margin: 0 15px;
-    text-decoration: none;
-    font-size: 2rem;
-    transition: color 0.3s;
-}
-
-.social-icons a:hover {
+#catchphrase {
+    font-size: 1.8em;
     color: #4285f4;
 }
 
-/* Section Styles */
-section {
-    padding: 80px 20px;
-    background-color: rgba(0, 0, 0, 0.8);
-    margin-bottom: 50px;
-    border-radius: 15px;
-    position: relative;
-    z-index: 1000;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+main {
+    padding: 40px;
 }
 
-section h2 {
-    font-size: 3.5rem;
-    margin-bottom: 40px;
-    text-align: center;
-    color: #00ccff;
-    text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #0099cc;
-}
-
-section p, section ul {
-    font-size: 1.5rem;
-    line-height: 1.8;
-    max-width: 800px;
-    margin: 0 auto 30px auto;
-    color: #ffffff;
-}
-
-blockquote {
-    font-size: 2rem;
-    font-style: italic;
-    text-align: center;
-    margin: 50px auto;
-    max-width: 800px;
-    color: #ffdd57;
-    text-shadow: 0 0 10px #ffdd57, 0 0 20px #ffdd57, 0 0 30px #ffdd57;
-}
-
-/* FAQ Styles */
-.faq-item {
-    margin-bottom: 50px;
-}
-
-.faq-item h3 {
-    font-size: 2rem;
-    margin-bottom: 15px;
-    color: #00ccff;
-    text-shadow: 0 0 5px #00ccff;
-}
-
-.faq-item p {
-    font-size: 1.5rem;
-    color: #ffffff;
-}
-
-/* Buy Button */
-.buy-button {
-    display: inline-block;
-    padding: 20px 40px;
-    background-color: #1e90ff;
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 1.5rem;
-    margin-top: 30px;
-    border-radius: 10px;
-    transition: background-color 0.3s ease;
-}
-
-.buy-button:hover {
-    background-color: #63b8ff;
-}
-
-/* Footer Styles */
-footer {
-    text-align: center;
-    padding: 50px 20px;
-    background-color: rgba(0, 0, 0, 0.9);
-    border-top: 2px solid #040488;
-    position: relative;
-    z-index: 1000;
-}
-
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.footer-content p {
-    margin: 15px 0;
-}
-
-.disclaimer {
-    font-size: 1rem;
-    color: #888888;
-}
-
-.final-message {
-    font-size: 1.25rem;
-    margin-top: 30px;
-    color: #ffffff;
-}
-
-/* Quantum Computer Mode Styles */
-body.quantum-mode {
-    background-color: #000000;
-    direction: ltr; /* Reset direction */
-    overflow: hidden; /* Disable scrolling in Quantum Computer mode */
-}
-
-body.quantum-mode #main-content {
-    display: none; /* Hide main content in Quantum Computer mode */
-}
-
-body.quantum-mode .language-selector {
-    color: #00ccff;
-}
-
-body.quantum-mode #language-select {
-    background-color: #000000;
-    color: #00ccff;
-    border: 1px solid #00ccff;
-}
-
-body.quantum-mode #language-select option {
-    background-color: #000000;
-    color: #00ccff;
-}
-
-/* RTL Styles */
-[dir="rtl"] .language-selector {
-    right: auto;
-    left: 10px;
-}
-
-[dir="rtl"] header {
+#contract-address-section {
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
     text-align: center;
 }
 
-[dir="rtl"] .contract-address {
+#contract-address-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    color: #e6e6e6;
+}
+
+#contract-address-container {
+    display: flex;
     justify-content: center;
-    text-align: center;
+    align-items: center;
 }
 
-[dir="rtl"] .social-icons {
-    justify-content: center;
-}
-
-[dir="rtl"] .contract-address span:first-child {
+#contract-address {
     margin-right: 10px;
-    margin-left: 0;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #333;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .header-content h1 {
-        font-size: 2.5rem;
-    }
-
-    .header-content p {
-        font-size: 1.25rem;
-    }
-
-    .social-icons a {
-        font-size: 1.5rem;
-    }
-
-    .contract-address {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .contract-address button {
-        margin: 10px 0 0 0;
-    }
-
-    .binary-text {
-        font-size: 12px;
-    }
+#copy-address-button {
+    background-color: #4285f4;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
-/* Additional Enhancements */
-body.quantum-mode .enhanced-glow {
-    font-size: 4.5rem;
-    color: #00ccff;
+#copy-address-button:hover {
+    background-color: #3367d6;
 }
 
-body.quantum-mode #binary-container {
-    will-change: transform;
-    opacity: 0.9;
+#about-section, #community-section, #faq-section, #buy-section {
+    background-color: #262626;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+#about-heading, #community-heading, #faq-heading {
+    color: #4285f4;
+    margin-bottom: 15px;
+}
+
+#buy-button {
+    background-color: #4285f4;
+    color: #fff;
+    border: none;
+    padding: 15px 25px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto;
+    transition: background-color 0.3s;
+}
+
+#buy-button:hover {
+    background-color: #3367d6;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+}
+
+.faq-question {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #e6e6e6;
+}
+
+.faq-answer {
+    margin-left: 20px;
+    color: #b3b3b3;
+}
+
+/* Quantum Computer mode styling */
+body.qc-mode {
+    background: #000;
+    color: #00ff99;
+}
+
+body.qc-mode #catchphrase {
+    color: #00ff99;
+}
+
+body.qc-mode .faq-question {
+    color: #00ff99;
+}
+
+body.qc-mode #contract-address {
+    background-color: #000;
+    color: #00ff99;
+    border: 1px solid #00ff99;
+}
+
+body.qc-mode #copy-address-button {
+    background-color: #00ff99;
+    color: #000;
+}
+
+body.qc-mode #copy-address-button:hover {
+    background-color: #00cc7a;
+}
+
+body.qc-mode #buy-button {
+    background-color: #00ff99;
+    color: #000;
+}
+
+body.qc-mode #buy-button:hover {
+    background-color: #00cc7a;
 }
