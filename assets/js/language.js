@@ -1,56 +1,73 @@
 /* assets/js/language.js */
 
-// Handles language-specific operations, such as setting content based on selected language
+// Language JSON files
+const languageFiles = {
+    en: '/assets/languages/en.json',
+    ja: '/assets/languages/ja.json',
+    zh: '/assets/languages/zh.json',
+    hi: '/assets/languages/hi.json',
+    fa: '/assets/languages/fa.json',
+    ar: '/assets/languages/ar.json',
+    he: '/assets/languages/he.json',
+    ru: '/assets/languages/ru.json',
+    de: '/assets/languages/de.json',
+    it: '/assets/languages/it.json',
+    es: '/assets/languages/es.json',
+    ko: '/assets/languages/ko.json',
+    qc: '/assets/languages/qc.json' // Quantum Computer Mode
+};
 
-function setLanguageContent(languageData) {
-    document.getElementById('catchphrase').innerText = languageData.catchphrase;
-    document.getElementById('contract-address-title').innerText = languageData.contractAddress;
-    document.getElementById('about-heading').innerText = languageData.aboutHeading;
-    document.getElementById('about-description').innerText = languageData.aboutDescription;
-    document.getElementById('community-heading').innerText = languageData.communityHeading;
-    document.getElementById('community-message').innerText = languageData.communityMessage;
-    document.getElementById('faq-heading').innerText = languageData.faqHeading;
-
-    const faqSection = document.getElementById('faq-section');
-    faqSection.innerHTML = '';
-    const faqQuestions = [
-        { question: languageData.faqQ1, answer: languageData.faqA1 },
-        { question: languageData.faqQ2, answer: languageData.faqA2 },
-        { question: languageData.faqQ3, answer: languageData.faqA3 }
-    ];
-    faqQuestions.forEach(faq => {
-        const faqItem = document.createElement('div');
-        faqItem.classList.add('faq-item');
-        const faqQuestion = document.createElement('h3');
-        faqQuestion.classList.add('faq-question');
-        faqQuestion.innerText = faq.question;
-        const faqAnswer = document.createElement('p');
-        faqAnswer.classList.add('faq-answer');
-        faqAnswer.innerText = faq.answer;
-        faqItem.appendChild(faqQuestion);
-        faqItem.appendChild(faqAnswer);
-        faqSection.appendChild(faqItem);
-    });
-
-    document.getElementById('buy-button').innerText = languageData.buyButton;
-    document.getElementById('finalMessage').innerText = languageData.finalMessage;
-}
-
+// Function to load language data
 function loadLanguage(language) {
-    fetch(`assets/languages/${language}.json`)
+    fetch(languageFiles[language])
         .then(response => response.json())
-        .then(data => setLanguageContent(data))
-        .catch(error => console.error('Error loading language file:', error));
+        .then(data => {
+            updateTextContent(data);
+        })
+        .catch(error => {
+            console.error('Error loading language file:', error);
+        });
 }
 
-// Event listener to change content when the language selection changes
-document.addEventListener('DOMContentLoaded', () => {
-    const languageSelect = document.getElementById('language-select');
+// Function to update text content dynamically
+function updateTextContent(data) {
+    const elements = document.querySelectorAll('[data-i18n]');
+    elements.forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (data[key]) {
+            element.textContent = data[key];
+        }
+    });
+}
+
+// Event listener for language selection
+if (languageSelect) {
     languageSelect.addEventListener('change', () => {
         const selectedLanguage = languageSelect.value;
         loadLanguage(selectedLanguage);
+        if (selectedLanguage === 'qc') {
+            document.body.classList.add(quantumModeClass);
+            updateForQuantumMode();
+        } else {
+            document.body.classList.remove(quantumModeClass);
+        }
     });
+}
 
-    // Set default language to English
-    loadLanguage('en');
+// Load default language on page load
+window.addEventListener('load', () => {
+    const defaultLanguage = languageSelect ? languageSelect.value : 'en';
+    loadLanguage(defaultLanguage);
 });
+
+// Quantum Computer Mode - Unique Language Handling
+function loadQuantumLanguage() {
+    if (languageSelect.value === 'qc') {
+        // Quantum-specific phrases and stylings
+        const quantumPhrases = document.querySelectorAll('.quantum-phrase');
+        quantumPhrases.forEach(phrase => {
+            phrase.style.textShadow = '0 0 15px #ffffff, 0 0 30px #00ccff, 0 0 45px #00ffcc';
+            phrase.classList.add('neon-quantum');
+        });
+    }
+}
