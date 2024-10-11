@@ -1,48 +1,72 @@
 /* assets/js/binary.js */
 
-// Handles binary rain effect for Quantum Computer mode
+// Variables for Quantum Binary Rain
+const binaryContainer = document.getElementById('binary-rain-container');
+const columns = [];
+const columnCount = Math.floor(window.innerWidth / 20);
+const quantumModeClass = 'quantum-mode';
 
-document.addEventListener('DOMContentLoaded', () => {
-    const qcModeOption = document.querySelector('option[value="qc"]');
-    qcModeOption.addEventListener('click', activateQuantumBinaryEffect);
+// Initialize Quantum Bit Rain
+function createBinaryRain() {
+    for (let i = 0; i < columnCount; i++) {
+        const binaryColumn = document.createElement('div');
+        binaryColumn.className = 'binary-column';
+        binaryColumn.style.setProperty('--random-position', Math.random() * 100);
+        binaryColumn.style.setProperty('--random-duration', Math.random());
+        binaryContainer.appendChild(binaryColumn);
+        columns.push(binaryColumn);
+        fillBinaryColumn(binaryColumn);
+    }
+}
 
-    function activateQuantumBinaryEffect() {
-        const binaryContainer = document.createElement('div');
-        binaryContainer.classList.add('binary-container');
-        document.body.appendChild(binaryContainer);
+// Fill each column with binary characters
+function fillBinaryColumn(column) {
+    for (let i = 0; i < 30; i++) {
+        const binaryChar = document.createElement('span');
+        binaryChar.className = 'binary-text';
+        binaryChar.textContent = Math.random() > 0.5 ? '|0⟩' : '|1⟩';
+        column.appendChild(binaryChar);
+        applyNeonEffect(binaryChar);
+    }
+}
 
-        // Create multiple binary streams to add to the binary container
-        for (let i = 0; i < 50; i++) {
-            const binaryStream = createBinaryStream();
-            binaryContainer.appendChild(binaryStream);
+// Apply neon effect to some characters in Quantum Computer Mode
+function applyNeonEffect(element) {
+    if (document.body.classList.contains(quantumModeClass) && Math.random() > 0.95) {
+        element.classList.add('neon-binary-column');
+    }
+}
+
+// Update the Quantum Bit Rain when switching to Quantum Computer Mode
+function updateForQuantumMode() {
+    columns.forEach(column => {
+        column.innerHTML = ''; // Clear existing bits
+        fillBinaryColumn(column); // Refill with potential neon effect
+    });
+}
+
+// Event Listener for Quantum Computer Mode
+const languageSelect = document.getElementById('language-select');
+if (languageSelect) {
+    languageSelect.addEventListener('change', () => {
+        if (languageSelect.value === 'qc') {
+            document.body.classList.add(quantumModeClass);
+            updateForQuantumMode();
+        } else {
+            document.body.classList.remove(quantumModeClass);
         }
-    }
+    });
+}
 
-    function createBinaryStream() {
-        const binaryStream = document.createElement('div');
-        binaryStream.classList.add('binary-stream');
-        if (Math.random() < 0.1) {
-            binaryStream.classList.add('neon-stream');
-        }
+// Initialize Quantum Bit Rain on Load
+window.addEventListener('load', () => {
+    createBinaryRain();
+});
 
-        const streamContent = generateBinaryContent();
-        binaryStream.innerHTML = streamContent;
-
-        setAnimationDuration(binaryStream);
-        return binaryStream;
-    }
-
-    function generateBinaryContent() {
-        const characters = ['0', '1'];
-        let content = '';
-        for (let i = 0; i < 100; i++) {
-            content += characters[Math.floor(Math.random() * characters.length)] + '<br>';
-        }
-        return content;
-    }
-
-    function setAnimationDuration(element) {
-        const duration = Math.random() * 20 + 10;
-        element.style.animationDuration = `${duration}s`;
-    }
+// Resize Quantum Rain Effect Based on Window Size
+window.addEventListener('resize', () => {
+    // Clear the existing columns and regenerate them based on the new size
+    binaryContainer.innerHTML = '';
+    columns.length = 0;
+    createBinaryRain();
 });
