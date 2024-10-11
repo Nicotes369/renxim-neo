@@ -1,39 +1,37 @@
-<!-- index.html - Enhanced Quantum Experience -->
+<!-- index.html - Ultimate Quantum Design -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>Renxim (RXM) — The Ultimate Quantum Meme Experience</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="catchphrase">Renxim (RXM) — QL1 エコシステム上で最もクールな Quantum Meme</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/binary.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/quantum-particles.css">
-    <script src="assets/js/three.min.js"></script>
-    <script src="assets/js/quantum-particles.js"></script>
 </head>
 <body>
+    <!-- Quantum Particle Background -->
+    <canvas id="quantum-canvas"></canvas>
+
     <!-- Language Selection -->
     <div class="language-selector">
         <select id="language-select">
-            <option value="en">🇬/🇱(English)</option>
-            <option value="ja" selected>🇯🇵(日本語)</option>
-            <option value="zh">🇨🇳(中文)</option>
-            <option value="hi">🇮🇳(Hindi)</option>
-            <option value="fa">🇮🇷(Persian)</option>
-            <option value="ar">🇸🇪(Arabic)</option>
-            <option value="he">🇳🇮(Hebrew)</option>
-            <option value="ru">🇷🇺(Russian)</option>
-            <option value="de">🇩🇪(German)</option>
-            <option value="it">🇮🇹(Italian)</option>
-            <option value="es">🇪🇸(Spanish)</option>
-            <option value="ko">🇰🇷(Korean)</option>
-            <option value="qc">🛠(Quantum Computer)</option>
+            <option value="en">🇬/🇺 (English)</option>
+            <option value="ja" selected>🇯🇵 (日本語)</option>
+            <option value="zh">🇨🇳 (中文)</option>
+            <option value="hi">🇮🇳 (Hindi)</option>
+            <option value="fa">🇵🇹 (Persian)</option>
+            <option value="ar">🇸🇦 (Arabic)</option>
+            <option value="he">🇮🇱 (Hebrew)</option>
+            <option value="ru">🇷🇺 (Russian)</option>
+            <option value="de">🇩🇪 (German)</option>
+            <option value="it">🇮🇹 (Italian)</option>
+            <option value="es">🇪🇸 (Spanish)</option>
+            <option value="ko">🇰🇷 (Korean)</option>
+            <option value="qc">💻 (Quantum Computer)</option>
         </select>
     </div>
-
-    <!-- Quantum Particle Background -->
-    <div id="quantum-particle-bg"></div>
 
     <!-- Main Content -->
     <div id="main-content">
@@ -42,14 +40,14 @@
             <div class="header-content">
                 <img src="assets/images/logo.png" alt="Renxim Logo" class="logo">
                 <h1 data-i18n="catchphrase" class="enhanced-glow">Renxim(RXM)</h1>
-                <h2 data-i18n="catchphrase-sub">The Coolest Quantum Meme on the QL1 Ecosystem</h2>
-                <p data-i18n="welcome-message" class="welcome-message">As an observer, you determine the future of Renxim.<br>Let’s collapse the wave function!</p>
+                <h2 data-i18n="catchphrase-sub">— QL1 エコシステム上で最もクールな Quantum Meme —</h2>
+                <p data-i18n="welcome-message" class="welcome-message">—— 観測者であるあなたが、Renxim の未来を決定する ——<br>さあ、波動関数を収縮させよう!</p>
                 <!-- Contract Address -->
-                <div class="contract-address-container">
-                    <span data-i18n="contract-address-label">Contract Address:</span>
+                <div class="contract-address-wrapper">
+                    <span data-i18n="contract-address-label" class="contract-label">Contract Address:</span>
                     <div class="contract-address">
                         <span id="contract-address">0xfE7Aa1F52633b0812bCAAa3fab4A4e2D3182Dbc4</span>
-                        <button onclick="copyAddress()" data-i18n="copy-button" class="copy-btn">Copy</button>
+                        <button onclick="copyAddress()" data-i18n="copy-button" class="copy-button">Copy</button>
                     </div>
                 </div>
                 <!-- Social Icons -->
@@ -58,7 +56,7 @@
                         <i class="fab fa-telegram"></i>
                     </a>
                     <a href="https://x.com/renxim666?s=21&t=Q_73za-RhI-hCOoflHh_gg" target="_blank" class="social-icon-link">
-                        <span class="x-logo fallback-font">&#x1d54f;</span>
+                        <span class="x-logo fallback-font">𝕏</span>
                     </a>
                 </div>
             </div>
@@ -68,28 +66,36 @@
         <section id="about">
             <h2 data-i18n="about-heading">About Renxim(RXM)</h2>
             <p data-i18n="about-description">
-                Renxim(RXM) is a cutting-edge meme coin developed by two experts, Ren and Xim.<br>
-                Inspired by Quantum Physics and Quantum Theory, it stands as the coolest entity on the QL1 Ecosystem.<br>
-                As a community-driven project, Renxim is capturing attention as the leading quantum meme coin.
+                Renxim(RXM) は、Ren と Xim の 2人のエキスパートによって開発された<br>
+                Quantum Physics(量子物理学) と Quantum Theory(量子論) を投射した最先端のミームコインです<br>
+                コミュニティ主子で運営され、QL1 エコシステム上で最もクールな存在として注目を集めています
             </p>
-            <blockquote data-i18n="about-quote">
-                Currently, Renxim(RXM) exists in a superposition state, intertwining with the quantum universe.<br>
-                By joining as a new observer, you collapse this wave function and create a new reality of bright potential!
-            </blockquote>
+        </section>
+
+        <!-- Timeline Section -->
+        <section id="timeline">
+            <h2 data-i18n="timeline-heading">タイムラインと偶然の一致</h2>
+            <p><strong data-i18n="key-message-label">Key Message:</strong> <span data-i18n="key-message">"Q17 O17 R17"</span></p>
+            <p data-i18n="timeline-question">あなたは、本当にこれが単なる偶然だと思いますか？</p>
+            <ul>
+                <li><strong>March 17:</strong> Shiba Predator (QOM)</li>
+                <li><strong>April 17:</strong> A Hunters Dream (CAW)</li>
+                <li><strong>May 17:</strong> Childfood’s End (O)</li>
+                <li><strong>September 17:</strong> Renxim (RXM)</li>
+            </ul>
+            <img src="assets/images/timeline-infographic.png" alt="Quantum Coincidence Timeline">
         </section>
 
         <!-- Community Section -->
         <section id="community">
             <h2 data-i18n="community-heading">Community</h2>
-            <p data-i18n="community-message">
-                Join us in quantum entanglement and shape the future of Renxim through observation!
-            </p>
+            <p data-i18n="community-message">あなたも私たちと量子的にもつれ合い<br>Renxim (RXM) の未来を観測によって確定させましょう！</p>
             <div class="social-icons">
                 <a href="https://t.me/renximQL1" target="_blank" class="social-icon-link">
                     <i class="fab fa-telegram"></i>
                 </a>
                 <a href="https://x.com/renxim666?s=21&t=Q_73za-RhI-hCOoflHh_gg" target="_blank" class="social-icon-link">
-                    <span class="x-logo fallback-font">&#x1d54f;</span>
+                    <span class="x-logo fallback-font">𝕏</span>
                 </a>
             </div>
         </section>
@@ -98,38 +104,65 @@
         <section id="faq">
             <h2 data-i18n="faq-heading">FAQ</h2>
             <div class="faq-item">
-                <h3 data-i18n="faq-q1">How can I purchase Renxim(RXM)?</h3>
+                <h3 data-i18n="faq-q1">Q1：Renxim(RXM) を購入するにはどうすればよいですか？</h3>
                 <p data-i18n="faq-a1">
-                    Connect your wallet to QomSwap and purchase directly using the contract address listed above.<br>
-                    Remember, in the quantum world, "you are the observer, and you create reality."<br>
-                    The possibilities are infinite until observed. Start your observation now!
+                    A1：現時点で確実な事実は、QomSwapにウォレットを接続し<br>上記に記載されたコントラクトアドレスで直接購入できるということです。
+                    しかしながら、量子の世界では「あなたが観測者であり、あなたが現実を創造します」。
+                    すなわち、あなたが望む瞬間、Renxim(RXM) は主要な仮想通貨取引所に<br>「同時に存在」する可能性がありますが、波動関数が収縮するまで可能性は無限大です。
+                    どの取引所で購入できるようになるかは、それを観測するまでのお楽しみです。観測を開始する準備は整いましたか？
                 </p>
-                <a href="https://www.qomswap.com/info/tokens/0xfE7Aa1F52633b0812bCAAa3fab4A4e2D3182Dbc4?chainId=766" target="_blank" class="buy-button" data-i18n="buy-button">Buy on QomSwap</a>
+                <a href="https://www.qomswap.com/info/tokens/0xfE7Aa1F52633b0812bCAAa3fab4A4e2D3182Dbc4?chainId=766" target="_blank" class="buy-button" data-i18n="buy-button">QomSwapで購入する</a>
             </div>
         </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="social-icons">
+                    <a href="https://t.me/renximQL1" target="_blank" class="social-icon-link">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                    <a href="https://x.com/renxim666?s=21&t=Q_73za-RhI-hCOoflHh_gg" target="_blank" class="social-icon-link">
+                        <span class="x-logo fallback-font">𝕏</span>
+                    </a>
+                </div>
+                <p class="disclaimer" data-i18n="disclaimer">※このウェブサイトは量子もつれで運営されています。シュレーディンガーの猫は、観測されるたびにご機安です。</p>
+                <p class="final-message" data-i18n="final-message">あなたの観測が Renxim の波動関数を収縮させ、未来を決定します。<br>量子的な旅へのご同行、心から感謝します！</p>
+            </div>
+        </footer>
     </div>
 
-    <!-- Quantum Particle Script Activation -->
-    <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            if (document.body.classList.contains('quantum-mode')) {
-                startQuantumParticles();
-            }
-        });
-
-        document.getElementById('language-select').addEventListener('change', function() {
-            if (this.value === 'qc') {
-                document.body.classList.add('quantum-mode');
-                startQuantumParticles();
-            } else {
-                document.body.classList.remove('quantum-mode');
-                stopQuantumParticles();
-            }
-        });
-    </script>
+    <!-- Scripts -->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/binary.js"></script>
     <script src="assets/js/language.js"></script>
-    <script src="assets/js/quantum-interactions.js"></script>
+    <script src="assets/js/quantum.js"></script>
+    <script>
+        // Disable scrolling in Quantum Computer mode only
+        const originalOverflow = document.body.style.overflow;
+        const languageSelect = document.getElementById('language-select');
+
+        languageSelect.addEventListener('change', function() {
+            if (this.value === 'qc') {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = originalOverflow;
+            }
+        });
+
+        // Initial check in case the page loads in Quantum Computer mode
+        if (languageSelect.value === 'qc') {
+            document.body.style.overflow = 'hidden';
+        }
+    </script>
+    <style>
+        /* FadeInOut Animation for Notifications */
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateY(20px); }
+            10% { opacity: 1; transform: translateY(0); }
+            90% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(20px); }
+        }
+    </style>
 </body>
 </html>
