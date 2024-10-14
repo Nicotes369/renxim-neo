@@ -48,6 +48,7 @@ function initBinaryRain() {
         return result.trim();
     }
 
+    
     // ウィンドウリサイズ時の処理
     window.addEventListener('resize', function() {
         binaryContainer.remove();
