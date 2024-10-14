@@ -1,5 +1,6 @@
 // assets/js/particle.js
 // パーティクルエフェクトの初期化
+
 function initParticleEffect() {
     // Three.js を使用してパーティクルを初期化
     // シーン、カメラ、レンダラーの作成
