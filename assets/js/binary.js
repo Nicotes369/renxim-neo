@@ -1,5 +1,4 @@
 // assets/js/binary.js
-
 // Binary Rain Effect using Canvas for enhanced performance and visual effects
 (function() {
     let canvas, ctx;
