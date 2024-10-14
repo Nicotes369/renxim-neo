@@ -12,6 +12,7 @@ function initParticleEffect() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('particle-container').appendChild(renderer.domElement);
 
+    
     // パーティクルの設定
     const particles = new THREE.BufferGeometry();
     const particleCount = 2000;
