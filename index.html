@@ -2,168 +2,152 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title data-i18n="catchphrase">Renxim(RXM) — QL1 エコシステム上で最もクールな Quantum Meme</title>
-    <meta name="description" content="Renxim(RXM)は量子物理学と量子論にインスパイアされた最先端のミームコインです。観測者としてあなたが未来を決定します。">
-    <meta property="og:title" content="Renxim(RXM) — QL1 エコシステム上で最もクールな Quantum Meme">
-    <meta property="og:description" content="Renxim(RXM)は量子物理学と量子論にインスパイアされた最先端のミームコインです。観測者としてあなたが未来を決定します。">
-    <meta property="og:image" content="assets/images/og-image.png">
-    <meta property="og:url" content="https://yourdomain.com">
+    <meta name="description" content="Renxim(RXM) — QL1 エコシステム上で最もクールな Quantum Meme。量子物理学と量子論にインスパイアされたコミュニティ主導のプロジェクト。">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Fonts and Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/fonts/your-custom-font.css">
+    <title data-i18n="catchphrase">Renxim(RXM) — QL1 エコシステム上で最もクールな Quantum Meme</title>
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Renxim(RXM)">
+    <meta property="og:description" content="QL1 エコシステム上で最もクールな Quantum Meme。量子物理学と量子論にインスパイアされたコミュニティ主導のプロジェクト。">
+    <meta property="og:image" content="assets/images/logo.png">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:type" content="website">
+
+    <!-- Fonts and Stylesheets -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
-    <!-- Particle.js -->
-    <script src="https://cdn.jsdelivr.net/npm/three@0.138.0/build/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/particlejs@2.2.2/dist/particle.min.js"></script>
-    <!-- GSAP and ScrollMagic -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.min.js" defer></script>
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Particles CSS -->
+    <link rel="stylesheet" href="assets/css/particles.css">
+    <!-- Binary CSS (Loaded Dynamically) -->
+    <!-- <link rel="stylesheet" href="assets/css/binary.css"> -->
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self';">
+
 </head>
 <body>
+
+    <!-- Loading Animation -->
+    <div id="loading-screen">
+        <div class="loader">
+            <div class="loader-inner"></div>
+        </div>
+    </div>
+
     <!-- Particle Background -->
-    <div id="particle-container"></div>
+    <div id="particle-background"></div>
 
     <!-- Language Selection -->
     <div class="language-selector">
-        <select id="language-select">
+        <label for="language-select" class="visually-hidden">言語を選択</label>
+        <select id="language-select" aria-label="言語を選択">
             <option value="en">🇬🇧/🇺🇸(English)</option>
             <option value="ja" selected>🇯🇵(日本語)</option>
             <option value="zh">🇨🇳(中文)</option>
-            <option value="hi">🇮🇳(Hindi)</option>
-            <option value="fa">🇮🇷(Persian)</option>
-            <option value="ar">🇸🇦(Arabic)</option>
-            <option value="he">🇮🇱(Hebrew)</option>
-            <option value="ru">🇷🇺(Russian)</option>
-            <option value="de">🇩🇪(German)</option>
-            <option value="it">🇮🇹(Italian)</option>
-            <option value="es">🇪🇸(Spanish)</option>
-            <option value="ko">🇰🇷(Korean)</option>
+            <option value="hi">🇮🇳(हिन्दी)</option>
+            <option value="fa">🇮🇷(فارسی)</option>
+            <option value="ar">🇸🇦(العربية)</option>
+            <option value="he">🇮🇱(עברית)</option>
+            <option value="ru">🇷🇺(Русский)</option>
+            <option value="de">🇩🇪(Deutsch)</option>
+            <option value="it">🇮🇹(Italiano)</option>
+            <option value="es">🇪🇸(Español)</option>
+            <option value="ko">🇰🇷(한국어)</option>
             <option value="qc">💻(Quantum Computer)</option>
         </select>
     </div>
 
+    <!-- Quantum Computer Mode Binary Effect Container -->
+    <div id="binary-container"></div>
+
     <!-- Main Content -->
     <div id="main-content">
-        <!-- Header Section -->
+        <!-- Header Section with Parallax Effect -->
         <header>
-            <nav>
-                <div class="logo-container">
-                    <img src="assets/images/logo.png" alt="Renxim Logo" class="logo">
-                </div>
-                <ul class="nav-links">
-                    <li><a href="#about" data-i18n="nav-about">About</a></li>
-                    <li><a href="#timeline" data-i18n="nav-timeline">Timeline</a></li>
-                    <li><a href="#community" data-i18n="nav-community">Community</a></li>
-                    <li><a href="#faq" data-i18n="nav-faq">FAQ</a></li>
-                </ul>
-            </nav>
             <div class="header-content">
+                <img src="assets/images/logo.png" alt="Renxim Logo" class="logo">
                 <h1 data-i18n="catchphrase" class="enhanced-glow">Renxim(RXM)</h1>
                 <h2 data-i18n="catchphrase-sub">— QL1 エコシステム上で最もクールな Quantum Meme —</h2>
                 <p data-i18n="welcome-message" class="welcome-message">—— 観測者であるあなたが、Renxim の未来を決定する ——<br>さあ、波動関数を収縮させよう！</p>
                 <!-- Contract Address -->
                 <div class="contract-address">
-                    <span data-i18n="contract-address-label">コントラクトアドレス:</span>
+                    <span data-i18n="contract-address-label" class="contract-label">コントラクトアドレス:</span>
                     <div class="address-copy">
-                        <div class="address-box">
-                            <span id="contract-address">0xfE7Aa1F52633b0812bCAAa3fab4A4e2D3182Dbc4</span>
-                            <button onclick="copyAddress()" data-i18n="copy-button">Copy</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Real-time Data Display -->
-                <div class="real-time-data">
-                    <div class="data-item">
-                        <span data-i18n="price-label">現在価格:</span>
-                        <span id="current-price">Loading...</span>
-                    </div>
-                    <div class="data-item">
-                        <span data-i18n="market-cap-label">時価総額:</span>
-                        <span id="market-cap">Loading...</span>
+                        <span id="contract-address">0xfE7Aa1F52633b0812bCAAa3fab4A4e2D3182Dbc4</span>
+                        <button onclick="copyAddress()" data-i18n="copy-button" aria-label="アドレスをコピー">Copy</button>
                     </div>
                 </div>
                 <!-- Social Icons -->
                 <div class="social-icons">
-                    <a href="https://t.me/renximQL1" target="_blank" class="social-icon-link">
+                    <a href="https://t.me/renximQL1" target="_blank" class="social-icon-link" aria-label="Telegram">
                         <i class="fab fa-telegram"></i>
                     </a>
-                    <a href="https://x.com/renxim666" target="_blank" class="social-icon-link">
+                    <a href="https://x.com/renxim666" target="_blank" class="social-icon-link" aria-label="X (formerly Twitter)">
                         <i class="fab fa-x-twitter"></i>
                     </a>
                 </div>
             </div>
         </header>
 
-        <!-- About Section -->
-        <section id="about" class="section">
-            <h2 data-i18n="about-heading" class="section-title">About Renxim(RXM)</h2>
-            <p data-i18n="about-description" class="section-description">
+        <!-- About Section with Parallax Effect -->
+        <section id="about">
+            <h2 data-i18n="about-heading">About Renxim(RXM)</h2>
+            <p data-i18n="about-description">
                 Renxim(RXM) は、Ren と Xim の 2人のエキスパートによって開発された<br>
                 Quantum Physics(量子物理学) と Quantum Theory(量子論) を投影した最先端のミームコインです。<br>
                 コミュニティ主導で運営され、QL1 エコシステム上で最もクールな存在として注目を集めています。
             </p>
-            <blockquote data-i18n="about-quote" class="section-quote">
+            <blockquote data-i18n="about-quote">
                 現在、Renxim(RXM) は、量子力学の奇妙な特性を強調する象徴として有名な<br>
                 シュレーディンガーの猫のように、量子の微細な振動と宇宙のリズムが交錯する<br>
                 無限の可能性の中で「重ね合わせの状態」で存在しています。<br><br>
                 あなたが新たな観測者として参加することで、この波動関数を収縮させ<br>
                 輝かしい豊かな未来を、新たな現実の波として創り出しましょう！
             </blockquote>
+            <!-- 3D Quantum Object -->
+            <div id="quantum-3d-object"></div>
         </section>
 
-        <!-- Timeline Section -->
-        <section id="timeline" class="section">
-            <h2 data-i18n="timeline-heading" class="section-title">タイムラインと偶然の一致</h2>
+        <!-- Timeline Section with Parallax Effect -->
+        <section id="timeline">
+            <h2 data-i18n="timeline-heading">タイムラインと偶然の一致</h2>
             <p><strong data-i18n="key-message-label">キーメッセージ:</strong> <span data-i18n="key-message">"Q17 O17 R17"</span></p>
             <p data-i18n="timeline-question">あなたは、本当にこれが単なる偶然だと思いますか？</p>
-            <div class="timeline-container">
-                <!-- Interactive Timeline -->
-                <div class="timeline-item">
-                    <span class="timeline-date"><strong>March 17:</strong></span>
-                    <span class="timeline-event">Shiba Predator (QOM)</span>
-                </div>
-                <div class="timeline-item">
-                    <span class="timeline-date"><strong>April 17:</strong></span>
-                    <span class="timeline-event">A Hunters Dream (CAW)</span>
-                </div>
-                <div class="timeline-item">
-                    <span class="timeline-date"><strong>May 17:</strong></span>
-                    <span class="timeline-event">Childfood’s End (O)</span>
-                </div>
-                <div class="timeline-item">
-                    <span class="timeline-date"><strong>September 17:</strong></span>
-                    <span class="timeline-event">Renxim (RXM)</span>
-                </div>
-            </div>
+            <ul>
+                <li><strong>March 17:</strong> Shiba Predator (QOM)</li>
+                <li><strong>April 17:</strong> A Hunters Dream (CAW)</li>
+                <li><strong>May 17:</strong> Childfood’s End (O)</li>
+                <li><strong>September 17:</strong> Renxim (RXM)</li>
+            </ul>
+            <!-- Timeline Infographic Image -->
+            <img src="assets/images/timeline-infographic.png" alt="Quantum Coincidence Timeline" class="timeline-image">
         </section>
 
         <!-- Community Section -->
-        <section id="community" class="section">
-            <h2 data-i18n="community-heading" class="section-title">Community</h2>
-            <p data-i18n="community-message" class="section-description">
+        <section id="community">
+            <h2 data-i18n="community-heading">Community</h2>
+            <p data-i18n="community-message">
                 あなたも私たちと量子的にもつれ合い<br>
                 Renxim (RXM) の未来を観測によって確定させましょう！
             </p>
             <div class="social-icons">
-                <a href="https://t.me/renximQL1" target="_blank" class="social-icon-link">
+                <a href="https://t.me/renximQL1" target="_blank" class="social-icon-link" aria-label="Telegram">
                     <i class="fab fa-telegram"></i>
                 </a>
-                <a href="https://x.com/renxim666" target="_blank" class="social-icon-link">
+                <a href="https://x.com/renxim666" target="_blank" class="social-icon-link" aria-label="X (formerly Twitter)">
                     <i class="fab fa-x-twitter"></i>
                 </a>
             </div>
         </section>
 
-        <!-- FAQ Section -->
-        <section id="faq" class="section">
-            <h2 data-i18n="faq-heading" class="section-title">FAQ</h2>
+        <!-- FAQ Section with Interactive Accordion -->
+        <section id="faq">
+            <h2 data-i18n="faq-heading">FAQ</h2>
             <div class="faq-item">
                 <h3 data-i18n="faq-q1" class="faq-question">Q1：Renxim(RXM) を購入するにはどうすればよいですか？</h3>
-                <p data-i18n="faq-a1" class="faq-answer">
+                <div class="faq-answer" data-i18n="faq-a1">
                     A1：現時点で確定している事実は、QomSwapにウォレットを接続し<br>
                     上記に記載されたコントラクトアドレスで直接購入できるということです。<br>
                     しかしながら、量子の世界では「あなたが観測者であり、あなたが現実を創造します」。<br>
@@ -171,41 +155,25 @@
                     「同時に存在」する可能性がありますが、波動関数が収縮するまで可能性は無限大です。<br>
                     どの取引所で購入できるようになるかは、それを観測するまでのお楽しみです。<br>
                     観測を開始する準備は整いましたか？
-                </p>
-                <a href="https://www.qomswap.com/info/tokens/0xfE7Aa1F52633b0812bCAAa3fab4A4e2D3182Dbc4?chainId=766" target="_blank" class="buy-button" data-i18n="buy-button">QomSwapで購入する</a>
+                </div>
+                <a href="https://www.qomswap.com/info/tokens/0xfE7Aa1F52633b0812bCAAa3fab4A4e2D3182Dbc4?chainId=766" target="_blank" class="buy-button" data-i18n="buy-button" aria-label="QomSwapで購入する">QomSwapで購入する</a>
             </div>
             <div class="faq-item">
                 <h3 data-i18n="faq-q2" class="faq-question">Q2：RXMはいつムーン（価格が急上昇）しますか？</h3>
-                <p data-i18n="faq-a2" class="faq-answer">
+                <div class="faq-answer" data-i18n="faq-a2">
                     A2：量子的な視点では、RXMはすでに月にも火星にも、他の銀河系にも存在しています。<br>
                     ただ、それを観測するか、そして参加するかどうかはあなた次第です！
-                </p>
+                </div>
             </div>
             <div class="faq-item">
                 <h3 data-i18n="faq-q3" class="faq-question">Q3：RXMへの投資は安全ですか？</h3>
-                <p data-i18n="faq-a3" class="faq-answer">
+                <div class="faq-answer" data-i18n="faq-a3">
                     A3：量子の世界では、全ては重ね合わせの中にあり、未来もまた無限の可能性を秘めています。<br>
                     ハイゼンベルグの不確定性原理が示す通り、RXM がミームコインの頂点に立つかどうかは予測不能です。<br>
                     しかし、多元宇宙のどこかではすでにRXMはその地位を確立しており、あなたが参加することで、その可能性の波が現実へと収束するかもしれません！<br>
                     あなたの観測が、次なるビッグヒットの始まりになるかも…<br>
                     ※ ( 観測によってのみ結果が決定されるため、投資結果の不確定性はあらかじめご了承ください。)
-                </p>
-            </div>
-        </section>
-
-        <!-- User-Generated Content Section -->
-        <section id="ugc" class="section">
-            <h2 data-i18n="ugc-heading" class="section-title">あなたの量子的アイデアを共有しよう！</h2>
-            <p data-i18n="ugc-description" class="section-description">
-                あなたの創造性を発揮し、量子の世界への情熱を共有しましょう。
-            </p>
-            <form id="ugc-form">
-                <input type="text" id="ugc-name" name="name" placeholder="あなたの名前" required>
-                <textarea id="ugc-content" name="content" placeholder="あなたのアイデアや作品を入力してください..." required></textarea>
-                <button type="submit" data-i18n="ugc-submit">投稿する</button>
-            </form>
-            <div id="ugc-display">
-                <!-- ユーザー投稿コンテンツがここに表示されます -->
+                </div>
             </div>
         </section>
 
@@ -213,10 +181,10 @@
         <footer>
             <div class="footer-content">
                 <div class="social-icons">
-                    <a href="https://t.me/renximQL1" target="_blank" class="social-icon-link">
+                    <a href="https://t.me/renximQL1" target="_blank" class="social-icon-link" aria-label="Telegram">
                         <i class="fab fa-telegram"></i>
                     </a>
-                    <a href="https://x.com/renxim666" target="_blank" class="social-icon-link">
+                    <a href="https://x.com/renxim666" target="_blank" class="social-icon-link" aria-label="X (formerly Twitter)">
                         <i class="fab fa-x-twitter"></i>
                     </a>
                 </div>
@@ -227,8 +195,32 @@
     </div>
 
     <!-- Scripts -->
-    <script src="assets/js/main.js" defer></script>
-    <script src="assets/js/language.js" defer></script>
-    <script src="assets/js/particle.js" defer></script>
+    <!-- Loading the necessary scripts -->
+    <script src="assets/js/three.min.js"></script>
+    <script src="assets/js/GLTFLoader.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/particles.js"></script>
+    <!-- Binary.js will be loaded dynamically -->
+    <!-- <script src="assets/js/binary.js"></script> -->
+    <script src="assets/js/language.js"></script>
+
+    <!-- Inline Script for Quantum Computer Mode Scroll Handling -->
+    <script>
+        const originalOverflow = document.body.style.overflow;
+        const languageSelect = document.getElementById('language-select');
+
+        languageSelect.addEventListener('change', function() {
+            if (this.value === 'qc') {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = originalOverflow;
+            }
+        });
+
+        if (languageSelect.value === 'qc') {
+            document.body.style.overflow = 'hidden';
+        }
+    </script>
+
 </body>
 </html>
