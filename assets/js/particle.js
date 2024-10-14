@@ -1,6 +1,6 @@
 // assets/js/particle.js
-// パーティクルエフェクトの初期化
 
+// パーティクルエフェクトの初期化
 function initParticleEffect() {
     // Three.js を使用してパーティクルを初期化
     // シーン、カメラ、レンダラーの作成
@@ -12,7 +12,6 @@ function initParticleEffect() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('particle-container').appendChild(renderer.domElement);
 
-    
     // パーティクルの設定
     const particles = new THREE.BufferGeometry();
     const particleCount = 2000;
@@ -36,7 +35,6 @@ function initParticleEffect() {
     const particleSystem = new THREE.Points(particles, particleMaterial);
     scene.add(particleSystem);
 
-    
     // アニメーションループ
     function animateParticles() {
         requestAnimationFrame(animateParticles);
