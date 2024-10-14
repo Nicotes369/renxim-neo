@@ -1,32 +1,24 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Page title with i18n attribute for translation -->
-    <title data-i18n="catchphrase">Renxim (RXM) — QL1 エコシステム上で最もクールな Quantum Meme</title>
-    <!-- Google Fonts for styling -->
+    <title data-i18n="catchphrase">Renxim (RXM) — The Coolest Quantum Meme on QL1 Ecosystem</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Link to main stylesheet -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <!-- Link to binary effect stylesheet -->
     <link rel="stylesheet" href="assets/css/binary.css">
-    <!-- Font Awesome for social media icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <!-- Howler.js library for sound effects -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.1/howler.min.js"></script>
 </head>
 <body>
     <!-- Language Selection -->
     <div class="language-selector">
-        <!-- Dropdown for language selection, IDs and classes used for dynamic JS control -->
         <select id="language-select">
             <option value="en">🇬🇧/🇺🇸(English)</option>
-            <option value="ja" selected>🇯🇵(日本語)</option>
+            <option value="ja">🇯🇵(日本語)</option>
             <option value="zh">🇨🇳(中文)</option>
             <option value="hi">🇮🇳(Hindi)</option>
             <option value="fa">🇮🇷(Persian)</option>
-            <option value="ar">🇸🇪(Arabic)</option>
-            <option value="he">🇱🇷(Hebrew)</option>
+            <option value="ar">🇸🇦(Arabic)</option>
+            <option value="he">🇮🇱(Hebrew)</option>
             <option value="ru">🇷🇺(Russian)</option>
             <option value="de">🇩🇪(German)</option>
             <option value="it">🇮🇹(Italian)</option>
@@ -37,38 +29,31 @@
     </div>
 
     <!-- Binary Rain Effect Container -->
-    <!-- Canvas element for rendering the binary rain animation in Quantum Mode -->
-    <canvas id="binary-canvas"></canvas>
+    <div id="binary-container"></div>
 
     <!-- Main Content -->
     <div id="main-content">
         <!-- Header Section -->
         <header>
             <div class="header-content">
-                <!-- Logo Image -->
                 <img src="assets/images/logo.png" alt="Renxim Logo" class="logo">
-                <!-- Catchphrase with translation support -->
-                <h1 data-i18n="catchphrase" class="enhanced-glow">Renxim(RXM)</h1>
-                <h2 data-i18n="catchphrase-sub">— QL1 エコシステム上で最もクールな Quantum Meme —</h2>
-                <!-- Welcome message with a motivational tagline -->
-                <p data-i18n="welcome-message" class="welcome-message">—— 観測者であるあなたが、Renxim の未来を決定する ——<br>さあ、波動関数を収縮させよう！</p>
+                <h1 data-i18n="catchphrase">Renxim(RXM)<br>— The Coolest Quantum Meme on QL1 Ecosystem —</h1>
+                <p data-i18n="welcome-message">—— As an observer, you determine the future of Renxim —<br>Let’s collapse the wave function!</p>
+                
                 <!-- Contract Address Section -->
-                <div class="contract-address">
-                    <!-- Label for contract address -->
-                    <span data-i18n="contract-address-label">コントラクトアドレス:</span>
-                    <!-- Contract address with copy button -->
-                    <div class="address-copy">
+                <div class="contract-section">
+                    <span class="contract-label" data-i18n="contract-address">Contract Address:</span>
+                    <div class="contract-details">
                         <span id="contract-address">0xfE7Aa1F52633b0812bCAAa3fab4A4e2D3182Dbc4</span>
-                        <button onclick="copyAddress()" data-i18n="copy-button">Copy</button>
+                        <button onclick="copyAddress()" class="copy-button" data-i18n="copy-button">Copy</button>
                     </div>
                 </div>
-                <!-- Social Media Icons -->
+                
+                <!-- Social Icons -->
                 <div class="social-icons">
-                    <!-- Telegram Icon Link -->
                     <a href="https://t.me/renximQL1" target="_blank" class="social-icon-link">
                         <i class="fab fa-telegram"></i>
                     </a>
-                    <!-- Twitter (X) Icon Link -->
                     <a href="https://x.com/renxim666?s=21&t=Q_73za-RhI-hCOoflHh_gg" target="_blank" class="social-icon-link">
                         <span class="x-logo fallback-font">&#x1d54f;</span>
                     </a>
@@ -78,15 +63,12 @@
 
         <!-- About Section -->
         <section id="about">
-            <!-- Heading for the About Section -->
             <h2 data-i18n="about-heading">About Renxim(RXM)</h2>
-            <!-- Description about Renxim -->
             <p data-i18n="about-description">
                 Renxim(RXM) は、Ren と Xim の 2人のエキスパートによって開発された<br>
                 Quantum Physics(量子物理学) と Quantum Theory(量子論) を投影した最先端のミームコインです<br>
                 コミュニティ主導で運営され、QL1 エコシステム上で最もクールな存在として注目を集めています
             </p>
-            <!-- Quote emphasizing Quantum properties -->
             <blockquote data-i18n="about-quote">
                 現在、Renxim(RXM) は、量子力学の奇妙な特性を強調する象徴として有名な<br>
                 シュレーディンガーの猫のように、量子の微細な振動と宇宙のリズムが交錯する<br>
@@ -98,12 +80,9 @@
 
         <!-- Timeline Section -->
         <section id="timeline">
-            <!-- Heading for Timeline Section -->
             <h2 data-i18n="timeline-heading">タイムラインと偶然の一致</h2>
-            <!-- Key message and a thought-provoking question -->
             <p><strong data-i18n="key-message-label">キーメッセージ:</strong> <span data-i18n="key-message">"Q17 O17 R17"</span></p>
             <p data-i18n="timeline-question">あなたは、本当にこれが単なる偶然だと思いますか？</p>
-            <!-- Timeline Events List -->
             <ul>
                 <li><strong>March 17:</strong> Shiba Predator (QOM)</li>
                 <li><strong>April 17:</strong> A Hunters Dream (CAW)</li>
@@ -116,13 +95,11 @@
 
         <!-- Community Section -->
         <section id="community">
-            <!-- Heading for Community Section -->
             <h2 data-i18n="community-heading">Community</h2>
-            <!-- Message inviting users to join the quantum community -->
-            <p data-i18n="community-message">あなたも私たちと量子的にもつれ合い<br>
+            <p data-i18n="community-message">
+                あなたも私たちと量子的にもつれ合い<br>
                 Renxim (RXM) の未来を観測によって確定させましょう！
             </p>
-            <!-- Social Media Icons for Community Engagement -->
             <div class="social-icons">
                 <a href="https://t.me/renximQL1" target="_blank" class="social-icon-link">
                     <i class="fab fa-telegram"></i>
@@ -135,31 +112,81 @@
 
         <!-- FAQ Section -->
         <section id="faq">
-            <!-- Heading for FAQ Section -->
             <h2 data-i18n="faq-heading">FAQ</h2>
-            <!-- FAQ Item 1 -->
             <div class="faq-item">
-                <h3 data-i18n="faq-q1">Q1：Renxim(RXM) を買うにはどうすればよいですか？</h3>
+                <h3 data-i18n="faq-q1">Q1：Renxim(RXM) を購入するにはどうすればよいですか？</h3>
                 <p data-i18n="faq-a1">
                     A1：現時点で確定している事実は、QomSwapにウォレットを接続し<br>
-                    上記に記述されたコントラクトアドレスで直接買取できるということです。<br>
+                    上記に記載されたコントラクトアドレスで直接購入できるということです。<br>
                     しかしながら、量子の世界では「あなたが観測者であり、あなたが現実を創造します」。<br>
+                    つまり、あなたが望む瞬間、Renxim(RXM) は主要な仮想通貨取引所に<br>
+                    「同時に存在」する可能性がありますが、波動関数が収縮するまで可能性は無限大です。<br>
+                    どの取引所で購入できるようになるかは、それを観測するまでのお楽しみです。<br>
+                    観測を開始する準備は整いましたか？
+                </p>
+                <a href="https://www.qomswap.com/info/tokens/0xfE7Aa1F52633b0812bCAAa3fab4A4e2D3182Dbc4?chainId=766" target="_blank" class="buy-button" data-i18n="buy-button">QomSwapで購入する</a>
+            </div>
+            <div class="faq-item">
+                <h3 data-i18n="faq-q2">Q2：RXMはいつムーン（価格が急上昇）しますか？</h3>
+                <p data-i18n="faq-a2">
+                    A2：量子的な視点では、RXMはすでに月にも火星にも、他の銀河系にも存在しています。<br>
+                    ただ、それを観測するか、そして参加するかどうかはあなた次第です！
+                </p>
+            </div>
+            <div class="faq-item">
+                <h3 data-i18n="faq-q3">Q3：RXMへの投資は安全ですか？</h3>
+                <p data-i18n="faq-a3">
+                    A3：量子の世界では、全ては重ね合わせの中にあり、未来もまた無限の可能性を秘めています。<br>
+                    ハイゼンベルグの不確定性原理が示す通り、RXM がミームコインの頂点に立つかどうかは予測不能です。<br>
+                    しかし、多元宇宙のどこかではすでにRXMはその地位を確立しており、あなたが参加することで、その可能性の波が現実へと収束するかもしれません！<br>
+                    あなたの観測が、次なるビッグヒットの始まりになるかも…<br>
+                    ※ ( 観測によってのみ結果が決定されるため、投資結果の不確定性はあらかじめご了承ください。)
                 </p>
             </div>
         </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="social-icons">
+                    <a href="https://t.me/renximQL1" target="_blank" class="social-icon-link">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                    <a href="https://x.com/renxim666?s=21&t=Q_73za-RhI-hCOoflHh_gg" target="_blank" class="social-icon-link">
+                        <span class="x-logo fallback-font">&#x1d54f;</span>
+                    </a>
+                </div>
+                <p class="disclaimer" data-i18n="disclaimer">
+                    ※このウェブサイトは量子もつれで運営されています。シュレーディンガーの猫は、観測されるたびにご機嫌です。
+                </p>
+                <p class="final-message" data-i18n="final-message">
+                    あなたの観測が Renxim の波動関数を収束させ、未来を決定します。<br>
+                    量子的な旅へのご同行、心から感謝します！
+                </p>
+            </div>
+        </footer>
     </div>
 
-    <!-- JavaScript to handle copy function and Quantum mode activation -->
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/binary.js"></script>
+    <script src="assets/js/language.js"></script>
     <script>
-        // Function to copy contract address to clipboard
-        function copyAddress() {
-            const address = document.getElementById("contract-address").innerText;
-            navigator.clipboard.writeText(address).then(() => {
-                alert("Contract address copied to clipboard!");
-            }).catch(err => {
-                console.error("Failed to copy address: ", err);
-            });
-        }
+        document.getElementById('language-select').addEventListener('change', function() {
+            if (this.value === 'qc') {
+                document.body.classList.add('quantum-mode');
+            } else {
+                document.body.classList.remove('quantum-mode');
+            }
+        });
+
+        // Enhance catchphrase with additional glow effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const catchphrase = document.querySelector('h1[data-i18n="catchphrase"]');
+            if (catchphrase) {
+                catchphrase.classList.add('enhanced-glow');
+            }
+        });
     </script>
 </body>
 </html>
