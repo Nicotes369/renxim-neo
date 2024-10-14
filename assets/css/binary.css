@@ -1,108 +1,91 @@
 /* assets/css/binary.css */
 
-/* General Styles for Quantum Bit Rain Effect */
-.binary-rain {
+/* Quantum Computer Mode Styles - Enhanced */
+
+/* Container for Binary Rain Effect */
+#binary-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -2;
-    pointer-events: none;
-    opacity: 0.8;
-    animation: fadeIn 2s ease-in;
+    overflow: hidden; /* Prevents any overflowing content from being displayed */
+    pointer-events: none; /* Allow clicks through the container to underlying elements */
+    z-index: 999; /* Ensures the binary rain effect stays above other elements */
 }
 
-/* Fade-in animation for the binary rain */
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 0.8; }
-}
-
-/* Binary Text Styling */
-.binary-text {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 20px;
-    color: rgba(0, 255, 255, 0.6); /* Cyan glow */
-    animation: binaryFall 10s linear infinite;
-    white-space: nowrap;
-}
-
-/* Quantum Computer Mode Enhancements */
-body.quantum-mode .binary-text {
-    font-size: 26px; /* Increase font size in quantum mode */
-    animation-duration: 12s; /* Slow down falling speed in quantum mode */
-}
-
-/* Neon Enhancement for Random Quantum Bits */
-@keyframes neonGlow {
-    0%, 100% { text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #00ffcc; }
-    50% { text-shadow: 0 0 20px #ffffff, 0 0 30px #00ffcc, 0 0 40px #00ffcc; }
-}
-
-.neon-binary-column {
-    animation: neonGlow 2s infinite alternate;
-    color: #ffffff; /* White neon color for a stronger effect */
-}
-
-/* Randomly highlight vertical columns in Quantum Computer Mode */
-body.quantum-mode .binary-column.neon {
-    animation: neonGlow 3s infinite alternate;
-}
-
-/* Binary Rain Animation */
-@keyframes binaryFall {
-    0% {
-        transform: translateY(-100%);
-    }
-    100% {
-        transform: translateY(100vh);
-    }
-}
-
-/* Binary Rain Container */
-#binary-rain-container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: -1;
-}
-
-/* Individual Column Styling */
+/* Binary Column Styles */
 .binary-column {
     position: absolute;
-    top: 0;
-    left: 0;
-    animation: binaryFall 15s linear infinite;
+    top: -100vh; /* Start the animation above the viewport for a falling effect */
+    width: 20px; /* Width of each binary column; can be adjusted for effect */
+    display: flex;
+    flex-direction: column; /* Stack the binary characters vertically */
+    align-items: center; /* Center align each character within the column */
+    animation: fall 10s linear infinite; /* Falling animation with a 10-second duration, looping infinitely */
+    opacity: 0.8; /* Slight transparency to soften the visual effect */
 }
 
-/* Randomized Positions for Binary Columns */
-@media (min-width: 768px) {
-    .binary-column {
-        left: calc(var(--random-position) * 1%);
-        animation-duration: calc(12s + (var(--random-duration) * 3s));
+/* Binary Text Styles */
+.binary-text {
+    color: #00ccff; /* Neon Blue color for the binary characters */
+    font-family: 'Orbitron', 'Noto Sans', 'Arial Unicode MS', sans-serif; /* Font stack for a futuristic look */
+    font-weight: bold; /* Bold text to enhance visibility */
+    text-shadow: 0 0 5px #00ccff, 0 0 10px #00ccff, 0 0 15px #00ccff; /* Glowing effect for the binary text */
+    margin: 2px 0; /* Spacing between each binary character */
+    transform: translateZ(0) scale(1); /* GPU acceleration for smoother animations */
+}
+
+/* Animation for Falling Effect */
+@keyframes fall {
+    0% {
+        transform: translateY(0) scale(0.5); /* Start at the top with a smaller scale */
+        opacity: 0; /* Invisible at the start of the animation */
+    }
+    10% {
+        opacity: 0.8; /* Fade in quickly to create a more dynamic entry */
+    }
+    90% {
+        opacity: 0.8; /* Maintain visibility during most of the fall */
+    }
+    100% {
+        transform: translateY(100vh) scale(1.5); /* End at the bottom with a larger scale for depth */
+        opacity: 0; /* Fade out as it exits the viewport */
     }
 }
 
-/* Quantum-Mode-Only Effects */
-body.quantum-mode .binary-column {
-    left: calc(var(--random-position) * 1.5%);
-    animation-duration: calc(15s + (var(--random-duration) * 4s));
+/* Adding White Neon Effect to Some Columns */
+@keyframes neonWhitePulse {
+    0%, 100% {
+        text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff; /* Initial and ending glow effect */
+    }
+    50% {
+        text-shadow: 0 0 20px #ffffff, 0 0 30px #ffffff, 0 0 40px #ffffff; /* Peak glow effect in the middle of the animation */
+    }
+}
+
+.white-neon-binary-text {
+    color: #ffffff; /* White color for special neon effect */
+    animation: neonWhitePulse 2s infinite alternate; /* Pulse animation to enhance the glowing effect */
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-    .binary-text {
-        font-size: 16px;
-    }
-
-    body.quantum-mode .binary-text {
-        font-size: 20px;
-    }
-
     .binary-column {
-        animation-duration: 18s;
+        width: 15px; /* Narrower columns for smaller screens */
     }
+
+    .binary-text {
+        font-size: 12px; /* Reduce font size for better fit on smaller screens */
+    }
+}
+
+/* Enhanced Performance by Reducing Repaints */
+body.quantum-mode #binary-container {
+    will-change: transform; /* Hint to the browser to optimize for this animation */
+}
+
+/* Additional Styling for Depth and Perspective */
+body.quantum-mode .binary-column {
+    animation-duration: 8s; /* Shorter fall duration for Quantum mode to enhance dynamic feel */
 }
