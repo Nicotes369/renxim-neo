@@ -1,111 +1,104 @@
-/* assets/js/main.js */
+// assets/js/main.js
 
-// Variables
-const copyButton = document.querySelector('.copy-button');
-const contractAddressElement = document.getElementById('contract-address');
+// コピー機能の強化とQuantum Computerモードとの連携
+document.addEventListener('DOMContentLoaded', () => {
+    const copyButton = document.querySelector('.contract-address button');
+    const addressElement = document.getElementById('contract-address');
 
-// Function to Copy Contract Address
-function copyAddress() {
-    const contractAddress = contractAddressElement.textContent;
-    navigator.clipboard.writeText(contractAddress).then(() => {
-        showNotification('Contract Address copied to clipboard!');
-    }).catch(err => {
-        console.error('Failed to copy: ', err);
+    // コピー機能の追加
+    copyButton.addEventListener('click', () => {
+        const address = addressElement.innerText.trim();
+        navigator.clipboard.writeText(address).then(() => {
+            // コピー完了時の発光効果を追加
+            addressElement.classList.add('copied');
+
+            // 現在の言語を取得し、コピー成功メッセージを生成
+            const currentLang = document.documentElement.getAttribute('lang') || 'en';
+
+            // 各言語に対応するコピー完了メッセージ
+            const messages = {
+                'en': 'Copy successful!',
+                'ja': 'コピーが完了しました！',
+                'zh': '复制成功！',
+                'hi': 'कॉपी सफल!',
+                'fa': 'کپی با موفقیت انجام شد!',
+                'ar': 'تم النسخ بنجاح!',
+                'he': 'ההעתקה הושלמה!',
+                'ru': 'Копирование завершено!',
+                'de': 'Kopieren erfolgreich!',
+                'it': 'Copia riuscita!',
+                'es': '¡Copia exitosa!',
+                'ko': '복사 완료!'
+            };
+
+            // 確認メッセージの要素を作成
+            const confirmation = document.createElement('span');
+            confirmation.classList.add('copy-confirmation');
+            confirmation.innerText = ` ${messages[currentLang] || messages['en']}`;
+            addressElement.parentElement.appendChild(confirmation);
+
+            // 2秒後に発光効果とメッセージを削除
+            setTimeout(() => {
+                addressElement.classList.remove('copied');
+                confirmation.remove();
+            }, 2000);
+        }).catch(err => {
+            // コピー失敗時のアラート
+            alert('アドレスのコピーに失敗しました。');
+            console.error('Error copying text: ', err);
+        });
     });
-}
 
-// Event Listener for Copy Button
-if (copyButton) {
-    copyButton.addEventListener('click', copyAddress);
-}
+    // Quantum Computerモードでのスクロール制御
+    const languageSelect = document.getElementById('language-select');
+    const originalOverflow = document.body.style.overflow;
 
-// Notification Function
-function showNotification(message) {
-    const notification = document.createElement('div');
-    notification.className = 'notification';
-    notification.textContent = message;
-    document.body.appendChild(notification);
-
-    // Animate the notification
-    setTimeout(() => {
-        notification.classList.add('show');
-    }, 100);
-
-    // Remove the notification after a delay
-    setTimeout(() => {
-        notification.classList.remove('show');
-        setTimeout(() => {
-            document.body.removeChild(notification);
-        }, 300);
-    }, 3000);
-}
-
-// Notification Styles (Dynamically Injected for Quantum Feel)
-const notificationStyle = document.createElement('style');
-notificationStyle.innerHTML = `
-    .notification {
-        position: fixed;
-        bottom: 30px;
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: rgba(0, 0, 0, 0.8);
-        color: #00ccff;
-        padding: 15px 30px;
-        border-radius: 10px;
-        box-shadow: 0 0 15px #00ccff, 0 0 25px #00ccff;
-        opacity: 0;
-        transition: opacity 0.5s, transform 0.5s;
-        z-index: 1002;
-    }
-    .notification.show {
-        opacity: 1;
-        transform: translateX(-50%) translateY(-20px);
-    }
-`;
-document.head.appendChild(notificationStyle);
-
-// Event Listener for Quantum Mode Activation
-if (languageSelect) {
-    languageSelect.addEventListener('change', () => {
-        if (languageSelect.value === 'qc') {
-            activateQuantumMode();
+    languageSelect.addEventListener('change', function() {
+        if (this.value === 'qc') {
+            document.body.style.overflow = 'hidden';
         } else {
-            deactivateQuantumMode();
+            document.body.style.overflow = originalOverflow;
         }
     });
-}
 
-// Activate Quantum Mode
-function activateQuantumMode() {
-    document.body.classList.add('quantum-mode');
-    showNotification('Quantum Computer Mode Activated! Welcome to the Quantum Realm!');
-}
-
-// Deactivate Quantum Mode
-function deactivateQuantumMode() {
-    document.body.classList.remove('quantum-mode');
-    showNotification('Quantum Computer Mode Deactivated! Returning to Classical View.');
-}
-
-// Responsive Font Adjustment for Quantum Mode
-window.addEventListener('resize', () => {
-    if (document.body.classList.contains('quantum-mode')) {
-        adjustQuantumFonts();
+    // ページ読み込み時にQuantum Computerモードが選択されている場合の処理
+    if (languageSelect.value === 'qc') {
+        document.body.style.overflow = 'hidden';
     }
-});
 
-// Function to Adjust Font Size in Quantum Mode
-function adjustQuantumFonts() {
-    const quantumTextElements = document.querySelectorAll('.quantum-phrase, .binary-text');
-    quantumTextElements.forEach(element => {
-        const newSize = window.innerWidth > 768 ? '26px' : '20px';
-        element.style.fontSize = newSize;
-    });
-}
+    // Binary Rain Effectの初期化
+    const binaryContainer = document.getElementById('binary-container');
+    if (binaryContainer) {
+        initBinaryRain(binaryContainer);
+    }
 
-// Initialize Quantum Effects on Page Load
-window.addEventListener('load', () => {
-    if (languageSelect && languageSelect.value === 'qc') {
-        activateQuantumMode();
+    function initBinaryRain(container) {
+        const columns = Math.floor(window.innerWidth / 20);
+        for (let i = 0; i < columns; i++) {
+            const column = document.createElement('div');
+            column.classList.add('binary-column');
+            container.appendChild(column);
+            createBinaryText(column);
+        }
+    }
+
+    function createBinaryText(column) {
+        const fragment = document.createDocumentFragment();
+        for (let i = 0; i < 20; i++) {
+            const text = document.createElement('span');
+            text.classList.add('binary-text');
+            text.innerText = Math.round(Math.random());
+            if (Math.random() < 0.05) {
+                text.classList.add('white-neon-binary-text');
+            }
+            fragment.appendChild(text);
+        }
+        column.appendChild(fragment);
+        animateBinaryColumn(column);
+    }
+
+    function animateBinaryColumn(column) {
+        const duration = 8000 + Math.random() * 4000; // Adjusted duration for more natural effect
+        column.style.animationDuration = `${duration}ms`;
     }
 });
