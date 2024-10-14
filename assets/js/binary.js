@@ -1,4 +1,5 @@
 // assets/js/binary.js
+
 // バイナリレインエフェクトの実装
 function initBinaryRain() {
     const binaryContainer = document.createElement('div');
