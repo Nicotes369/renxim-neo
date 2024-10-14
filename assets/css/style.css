@@ -8,48 +8,25 @@ body {
     background-color: #04040c; /* Fallback color */
     color: #ffffff;
     direction: ltr; /* Default direction */
-}
-
-/* Enhanced Quantum Background */
-#quantum-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+    overflow: auto; /* Allow scrolling */
 }
 
 /* Enhanced Glow Effect for Catchphrase */
 .enhanced-glow {
-    text-shadow: 0 0 25px #00ccff, 0 0 35px #00ccff, 0 0 50px #0099cc;
-    animation: pulseGlow 2.5s infinite;
+    text-shadow: 0 0 20px #00ccff, 0 0 30px #00ccff, 0 0 40px #0099cc;
+    animation: pulseGlow 2s infinite;
 }
 
 @keyframes pulseGlow {
     0% {
-        text-shadow: 0 0 15px #00ccff, 0 0 25px #00ccff, 0 0 40px #0099cc;
+        text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #0099cc;
     }
     50% {
-        text-shadow: 0 0 30px #00ccff, 0 0 40px #00ccff, 0 0 60px #0099cc;
+        text-shadow: 0 0 20px #00ccff, 0 0 30px #00ccff, 0 0 40px #0099cc;
     }
     100% {
-        text-shadow: 0 0 15px #00ccff, 0 0 25px #00ccff, 0 0 40px #0099cc;
+        text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #0099cc;
     }
-}
-
-/* Enhanced Scrollable Content */
-body:not(.quantum-mode) {
-    overflow: auto;
-}
-body.quantum-mode {
-    overflow: hidden;
-}
-
-/* Quantum Computer Mode Styles */
-body.quantum-mode {
-    background-color: #000000;
-    color: #00ccff;
 }
 
 /* Language Selector */
@@ -61,19 +38,18 @@ body.quantum-mode {
 }
 
 #language-select {
-    padding: 10px 15px;
-    font-size: 18px;
+    padding: 8px 12px;
+    font-size: 16px;
     background-color: #ffffff;
     color: #000000;
-    border: 2px solid #cccccc;
-    border-radius: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 #language-select:hover {
     background-color: #f0f0f0;
-    transform: scale(1.05);
 }
 
 /* Header Styles */
@@ -82,85 +58,97 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 150px 20px;
-    background-color: rgba(0, 0, 0, 0.7);
+    padding: 100px 20px;
+    background-color: rgba(0, 0, 0, 0.5);
     position: relative;
     z-index: 1000;
 }
 
 .logo {
-    width: 200px;
-    margin-bottom: 30px;
+    width: 150px;
+    margin-bottom: 20px;
 }
 
 .header-content h1 {
-    font-size: 56px;
+    font-size: 48px;
     margin-bottom: 20px;
     text-align: center;
-    color: #00ccff;
-    text-shadow: 0 0 15px #00ccff, 0 0 25px #00ccff, 0 0 35px #0099cc;
-}
-
-.header-content h2 {
-    font-size: 36px;
-    margin-bottom: 30px;
-    text-align: center;
-    color: #ffffff;
-    text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #888888;
+    color: #00ccff; /* Maintain glow color */
+    text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #0099cc;
 }
 
 .header-content p {
     font-size: 24px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     text-align: center;
     color: #ffffff;
 }
 
-/* Contract Address Wrapper */
-.contract-address-wrapper {
-    margin-bottom: 30px;
+/* Enhanced Catchphrase Glow */
+.enhanced-glow:hover {
+    text-shadow: 0 0 30px #00ccff, 0 0 40px #00ccff, 0 0 50px #00ccff;
 }
 
-.contract-label {
-    font-size: 22px;
-    color: #00ccff;
-    margin-bottom: 10px;
-    text-align: center;
-}
-
+/* Contract Address Styles - Improved */
 .contract-address {
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 20px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.contract-address span:first-child {
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.contract-address span#contract-address {
     background-color: rgba(255, 255, 255, 0.1);
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px #00ccff;
-    position: relative;
-    transition: box-shadow 0.5s, transform 0.3s;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 20px;
+    transition: box-shadow 0.5s;
 }
 
-.contract-address:hover {
-    box-shadow: 0 0 25px #00ccff, 0 0 40px #00ccff;
-    transform: scale(1.05);
+.contract-address span#contract-address:hover {
+    box-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #00ccff;
 }
 
-.copy-button {
+.contract-address button {
     padding: 10px 20px;
-    font-size: 18px;
+    font-size: 16px;
     cursor: pointer;
     background-color: #1e90ff;
     color: #ffffff;
     border: none;
-    border-radius: 10px;
-    margin-left: 15px;
-    transition: background-color 0.3s ease, transform 0.3s;
+    border-radius: 5px;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
 }
 
-.copy-button:hover {
+.contract-address button:hover {
     background-color: #63b8ff;
-    transform: scale(1.1);
+}
+
+/* Confirmation Message Styling */
+.copy-confirmation {
+    color: #ffdd57; /* Yellow color matching 'about-quote' */
+    margin-left: 10px;
+    font-weight: bold;
+    animation: fadeOut 2s forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
 
 /* Social Icons */
@@ -172,120 +160,135 @@ header {
 
 .social-icons a {
     color: #ffffff;
-    margin: 0 15px;
+    margin: 0 10px;
     text-decoration: none;
-    font-size: 2rem;
-    transition: color 0.3s, transform 0.3s;
+    font-size: 1.5rem;
+    transition: color 0.3s;
 }
 
 .social-icons a:hover {
     color: #4285f4;
-    transform: scale(1.2);
 }
 
 /* Section Styles */
 section {
-    padding: 80px 20px;
-    background-color: rgba(0, 0, 0, 0.85);
-    margin-bottom: 50px;
-    border-radius: 15px;
+    padding: 60px 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 40px;
+    border-radius: 10px;
     position: relative;
     z-index: 1000;
 }
 
 section h2 {
-    font-size: 42px;
-    margin-bottom: 40px;
+    font-size: 36px;
+    margin-bottom: 30px;
     text-align: center;
     color: #00ccff;
-    text-shadow: 0 0 15px #00ccff, 0 0 25px #00ccff, 0 0 35px #0099cc;
+    text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #0099cc;
 }
 
 section p, section ul {
-    font-size: 20px;
-    line-height: 1.8;
-    max-width: 900px;
-    margin: 0 auto 30px auto;
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto 20px auto;
     color: #ffffff;
 }
 
 blockquote {
-    font-size: 28px;
+    font-size: 24px;
     font-style: italic;
     text-align: center;
-    margin: 50px auto;
-    max-width: 900px;
+    margin: 40px auto;
+    max-width: 800px;
     color: #ffdd57;
-    text-shadow: 0 0 15px #ffdd57, 0 0 25px #ffdd57, 0 0 35px #ffdd57;
+    text-shadow: 0 0 10px #ffdd57, 0 0 20px #ffdd57, 0 0 30px #ffdd57;
 }
 
 /* FAQ Styles */
 .faq-item {
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 .faq-item h3 {
-    font-size: 28px;
-    margin-bottom: 15px;
+    font-size: 24px;
+    margin-bottom: 10px;
     color: #00ccff;
-    text-shadow: 0 0 10px #00ccff;
+    text-shadow: 0 0 5px #00ccff;
 }
 
 .faq-item p {
-    font-size: 20px;
+    font-size: 18px;
     color: #ffffff;
 }
 
 /* Buy Button */
 .buy-button {
     display: inline-block;
-    padding: 20px 35px;
+    padding: 15px 30px;
     background-color: #1e90ff;
     color: #ffffff;
     text-decoration: none;
-    font-size: 20px;
-    margin-top: 30px;
-    border-radius: 10px;
-    transition: background-color 0.3s ease, transform 0.3s;
+    font-size: 18px;
+    margin-top: 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
 .buy-button:hover {
     background-color: #63b8ff;
-    transform: scale(1.1);
 }
 
 /* Footer Styles */
 footer {
     text-align: center;
-    padding: 60px 20px;
-    background-color: rgba(0, 0, 0, 0.95);
-    border-top: 3px solid #040488;
+    padding: 40px 20px;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-top: 2px solid #040488;
     position: relative;
     z-index: 1000;
 }
 
 .footer-content {
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
 .footer-content p {
-    margin: 15px 0;
+    margin: 10px 0;
+}
+
+.disclaimer {
+    font-size: 14px;
     color: #888888;
-    font-size: 18px;
 }
 
 .final-message {
-    font-size: 20px;
-    margin-top: 30px;
+    font-size: 16px;
+    margin-top: 20px;
     color: #ffffff;
 }
 
-/* Quantum Computer Mode - Enhanced Styles */
+/* Quantum Computer Mode Styles */
+body.quantum-mode {
+    background-color: #000000;
+    direction: ltr; /* Reset direction */
+    overflow: auto; /* Allow scrolling */
+}
+
+body.quantum-mode #main-content {
+    display: none; /* Hide main content in Quantum Computer mode */
+}
+
+body.quantum-mode .language-selector {
+    color: #00ccff;
+}
+
 body.quantum-mode #language-select {
     background-color: #000000;
     color: #00ccff;
-    border: 2px solid #00ccff;
+    border: 1px solid #00ccff;
 }
 
 body.quantum-mode #language-select option {
@@ -293,18 +296,34 @@ body.quantum-mode #language-select option {
     color: #00ccff;
 }
 
-body.quantum-mode .contract-address {
-    box-shadow: 0 0 30px #00ccff, 0 0 50px #00ccff;
+/* RTL Styles */
+[dir="rtl"] .language-selector {
+    right: auto;
+    left: 10px;
 }
 
-body.quantum-mode .social-icons a {
-    color: #00ccff;
+[dir="rtl"] header {
+    text-align: center;
+}
+
+[dir="rtl"] .contract-address {
+    justify-content: center;
+    text-align: center;
+}
+
+[dir="rtl"] .social-icons {
+    justify-content: center;
+}
+
+[dir="rtl"] .contract-address span:first-child {
+    margin-right: 10px;
+    margin-left: 0;
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .header-content h1 {
-        font-size: 38px;
+        font-size: 32px;
     }
 
     .header-content p {
@@ -312,7 +331,7 @@ body.quantum-mode .social-icons a {
     }
 
     .social-icons a {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 
     .contract-address {
@@ -320,11 +339,11 @@ body.quantum-mode .social-icons a {
         text-align: center;
     }
 
-    .copy-button {
-        margin: 15px 0 0 0;
+    .contract-address button {
+        margin: 10px 0 0 0;
     }
 
     .binary-text {
-        font-size: 14px;
+        font-size: 10px;
     }
 }
