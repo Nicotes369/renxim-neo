@@ -1,91 +1,53 @@
 /* assets/css/binary.css */
 
-/* Quantum Computer Mode Styles - Enhanced */
-
-/* Container for Binary Rain Effect */
-#binary-container {
+/* Binary Rain Effect Styles */
+#binary-canvas {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden; /* Prevents any overflowing content from being displayed */
-    pointer-events: none; /* Allow clicks through the container to underlying elements */
-    z-index: 999; /* Ensures the binary rain effect stays above other elements */
+    pointer-events: none; /* Allow interactions with underlying content */
+    z-index: 999; /* Ensure it's above other elements */
+    background-color: transparent; /* Transparent background */
+    mix-blend-mode: screen; /* Enhance neon effect through blending */
+    opacity: 0.8; /* Slight transparency for better visuals */
+    animation: binaryFadeIn 1s ease-in-out forwards; /* Smooth fade-in effect */
 }
 
-/* Binary Column Styles */
-.binary-column {
-    position: absolute;
-    top: -100vh; /* Start the animation above the viewport for a falling effect */
-    width: 20px; /* Width of each binary column; can be adjusted for effect */
-    display: flex;
-    flex-direction: column; /* Stack the binary characters vertically */
-    align-items: center; /* Center align each character within the column */
-    animation: fall 10s linear infinite; /* Falling animation with a 10-second duration, looping infinitely */
-    opacity: 0.8; /* Slight transparency to soften the visual effect */
+/* Fade-in animation for the canvas */
+@keyframes binaryFadeIn {
+    from { opacity: 0; }
+    to { opacity: 0.8; }
 }
 
-/* Binary Text Styles */
-.binary-text {
-    color: #00ccff; /* Neon Blue color for the binary characters */
-    font-family: 'Orbitron', 'Noto Sans', 'Arial Unicode MS', sans-serif; /* Font stack for a futuristic look */
-    font-weight: bold; /* Bold text to enhance visibility */
-    text-shadow: 0 0 5px #00ccff, 0 0 10px #00ccff, 0 0 15px #00ccff; /* Glowing effect for the binary text */
-    margin: 2px 0; /* Spacing between each binary character */
-    transform: translateZ(0) scale(1); /* GPU acceleration for smoother animations */
+/* Additional Quantum Computer Mode Styles */
+body.quantum-mode #binary-canvas {
+    display: block; /* Show canvas in Quantum Computer mode */
 }
 
-/* Animation for Falling Effect */
-@keyframes fall {
-    0% {
-        transform: translateY(0) scale(0.5); /* Start at the top with a smaller scale */
-        opacity: 0; /* Invisible at the start of the animation */
-    }
-    10% {
-        opacity: 0.8; /* Fade in quickly to create a more dynamic entry */
-    }
-    90% {
-        opacity: 0.8; /* Maintain visibility during most of the fall */
-    }
-    100% {
-        transform: translateY(100vh) scale(1.5); /* End at the bottom with a larger scale for depth */
-        opacity: 0; /* Fade out as it exits the viewport */
-    }
+body:not(.quantum-mode) #binary-canvas {
+    display: none; /* Hide canvas in normal mode */
 }
 
-/* Adding White Neon Effect to Some Columns */
-@keyframes neonWhitePulse {
-    0%, 100% {
-        text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff; /* Initial and ending glow effect */
-    }
-    50% {
-        text-shadow: 0 0 20px #ffffff, 0 0 30px #ffffff, 0 0 40px #ffffff; /* Peak glow effect in the middle of the animation */
-    }
+/* Gradient Overlay to Enhance Neon Effect */
+#binary-container::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(4,4,12,0.8) 0%, rgba(4,4,12,0.9) 100%);
+    pointer-events: none; /* Allow interactions with underlying content */
+    z-index: 998; /* Just below the canvas */
+    opacity: 0.5; /* Adjust opacity for subtle effect */
 }
 
-.white-neon-binary-text {
-    color: #ffffff; /* White color for special neon effect */
-    animation: neonWhitePulse 2s infinite alternate; /* Pulse animation to enhance the glowing effect */
-}
-
-/* Responsive Adjustments */
+/* Ensure the canvas is responsive */
 @media (max-width: 768px) {
-    .binary-column {
-        width: 15px; /* Narrower columns for smaller screens */
+    #binary-canvas {
+        /* Adjust any properties if necessary for smaller screens */
+        opacity: 0.7; /* Slightly reduce opacity on smaller screens */
     }
-
-    .binary-text {
-        font-size: 12px; /* Reduce font size for better fit on smaller screens */
-    }
-}
-
-/* Enhanced Performance by Reducing Repaints */
-body.quantum-mode #binary-container {
-    will-change: transform; /* Hint to the browser to optimize for this animation */
-}
-
-/* Additional Styling for Depth and Perspective */
-body.quantum-mode .binary-column {
-    animation-duration: 8s; /* Shorter fall duration for Quantum mode to enhance dynamic feel */
 }
