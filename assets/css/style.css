@@ -1,349 +1,291 @@
-/* assets/css/style.css */
-
 /* General Styles */
 body {
+    font-family: 'Orbitron', sans-serif;
+    background-color: #000;
+    color: #fff;
     margin: 0;
-    padding: 0;
-    font-family: 'Orbitron', 'Noto Sans', 'Arial Unicode MS', sans-serif;
-    background-color: #04040c; /* Fallback color */
-    color: #ffffff;
-    direction: ltr; /* Default direction */
-    overflow: auto; /* Allow scrolling */
+    overflow-x: hidden;
+    transition: background-color 1s ease, color 1s ease; /* Smooth transition for theme changes */
 }
 
-/* Enhanced Glow Effect for Catchphrase */
-.enhanced-glow {
-    text-shadow: 0 0 20px #00ccff, 0 0 30px #00ccff, 0 0 40px #0099cc;
-    animation: pulseGlow 2s infinite;
-}
-
-@keyframes pulseGlow {
-    0% {
-        text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #0099cc;
-    }
-    50% {
-        text-shadow: 0 0 20px #00ccff, 0 0 30px #00ccff, 0 0 40px #0099cc;
-    }
-    100% {
-        text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #0099cc;
-    }
-}
-
-/* Language Selector */
+/* Language Selector Styles */
 .language-selector {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    z-index: 1001;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10; /* Ensure the language selector is above other elements */
 }
 
-#language-select {
-    padding: 8px 12px;
-    font-size: 16px;
-    background-color: #ffffff;
-    color: #000000;
-    border: 1px solid #cccccc;
+.language-selector select {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
     border-radius: 5px;
+    font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+    outline: none;
+    transition: background-color 0.3s ease; /* Hover effect for dropdown */
 }
 
-#language-select:hover {
-    background-color: #f0f0f0;
+.language-selector select:hover {
+    background-color: #555;
 }
 
-/* Header Styles */
-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 100px 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    position: relative;
-    z-index: 1000;
+/* Binary Canvas Styling */
+#binary-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Set behind other content for background effect */
+}
+
+/* Header Section */
+.header-content {
+    text-align: center;
+    padding: 100px 20px; /* Space around header content */
 }
 
 .logo {
     width: 150px;
+    height: auto;
     margin-bottom: 20px;
+    filter: drop-shadow(0 0 20px #4285f4); /* Glow effect around logo */
+    transition: transform 0.3s ease; /* Smooth scaling on hover */
 }
 
-.header-content h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #00ccff; /* Maintain glow color */
-    text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #0099cc;
+.logo:hover {
+    transform: scale(1.1); /* Enlarge logo slightly on hover */
 }
 
-.header-content p {
-    font-size: 24px;
-    margin-bottom: 30px;
-    text-align: center;
-    color: #ffffff;
+.enhanced-glow {
+    font-size: 3em;
+    text-shadow: 0 0 20px #4285f4, 0 0 40px #4285f4, 0 0 60px #4285f4; /* Multiple layers of glowing effect */
+    animation: pulse-glow 2s infinite alternate; /* Create a pulsing glow effect */
 }
 
-/* Enhanced Catchphrase Glow */
-.enhanced-glow:hover {
-    text-shadow: 0 0 30px #00ccff, 0 0 40px #00ccff, 0 0 50px #00ccff;
+@keyframes pulse-glow {
+    0% {
+        text-shadow: 0 0 20px #4285f4, 0 0 40px #4285f4, 0 0 60px #4285f4;
+    }
+    100% {
+        text-shadow: 0 0 30px #4285f4, 0 0 50px #4285f4, 0 0 80px #4285f4; /* Increase glow intensity */
+    }
 }
 
-/* Contract Address Styles - Improved */
+.welcome-message {
+    font-size: 1.5em;
+    margin: 20px 0;
+    line-height: 1.6; /* Improve readability */
+    color: #fff;
+}
+
+/* Contract Address Section */
 .contract-address {
+    margin: 40px 0;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background for contrast */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Shadow to add depth */
+    display: inline-block;
+    max-width: 90%; /* Responsive sizing */
+}
+
+.address-copy {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    margin-bottom: 20px;
-    color: #ffffff;
+    align-items: center; /* Vertically align elements */
+    justify-content: center; /* Center elements horizontally */
 }
 
-.contract-address span:first-child {
-    margin-right: 10px;
-    font-weight: bold;
-    font-size: 20px;
+#contract-address {
+    font-size: 1.2em;
+    margin-right: 15px;
+    background: rgba(0, 0, 0, 0.5); /* Dark background for contrast */
+    padding: 5px 10px;
+    border-radius: 5px; /* Rounded corners */
 }
 
-.contract-address span#contract-address {
-    background-color: rgba(255, 255, 255, 0.1);
+button[data-i18n="copy-button"] {
+    background-color: #4285f4;
+    color: #fff;
+    border: none;
     padding: 10px 15px;
     border-radius: 5px;
-    font-weight: bold;
-    font-size: 20px;
-    transition: box-shadow 0.5s;
-}
-
-.contract-address span#contract-address:hover {
-    box-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #00ccff;
-}
-
-.contract-address button {
-    padding: 10px 20px;
-    font-size: 16px;
+    font-size: 1em;
     cursor: pointer;
-    background-color: #1e90ff;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    margin-left: 10px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
 }
 
-.contract-address button:hover {
-    background-color: #63b8ff;
+button[data-i18n="copy-button"]:hover {
+    background-color: #357ae8; /* Darken button on hover */
+    transform: scale(1.05); /* Slight scaling effect on hover */
 }
 
-/* Confirmation Message Styling */
-.copy-confirmation {
-    color: #ffdd57; /* Yellow color matching 'about-quote' */
-    margin-left: 10px;
-    font-weight: bold;
-    animation: fadeOut 2s forwards;
-}
-
-@keyframes fadeOut {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
-}
-
-/* Social Icons */
+/* Social Media Icons */
 .social-icons {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
-.social-icons a {
-    color: #ffffff;
+.social-icon-link {
     margin: 0 10px;
-    text-decoration: none;
-    font-size: 1.5rem;
-    transition: color 0.3s;
+    font-size: 2em;
+    color: #fff;
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
 }
 
-.social-icons a:hover {
+.social-icon-link:hover {
+    color: #4285f4; /* Change icon color on hover */
+    transform: rotate(10deg) scale(1.2); /* Add rotation and scaling on hover */
+}
+
+/* About Section */
+#about {
+    padding: 80px 20px;
+    background: rgba(0, 0, 0, 0.8); /* Dark semi-transparent background */
+    border-top: 2px solid #4285f4;
+    border-bottom: 2px solid #4285f4; /* Borders to define section */
+}
+
+#about h2 {
+    font-size: 2.5em;
     color: #4285f4;
-}
-
-/* Section Styles */
-section {
-    padding: 60px 20px;
-    background-color: rgba(0, 0, 0, 0.8);
-    margin-bottom: 40px;
-    border-radius: 10px;
-    position: relative;
-    z-index: 1000;
-}
-
-section h2 {
-    font-size: 36px;
-    margin-bottom: 30px;
     text-align: center;
-    color: #00ccff;
-    text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #0099cc;
+    margin-bottom: 20px;
 }
 
-section p, section ul {
-    font-size: 18px;
-    line-height: 1.6;
-    max-width: 800px;
-    margin: 0 auto 20px auto;
-    color: #ffffff;
-}
-
-blockquote {
-    font-size: 24px;
-    font-style: italic;
+#about p {
+    font-size: 1.2em;
+    line-height: 1.8;
+    color: #ddd;
     text-align: center;
+}
+
+#about blockquote {
+    font-size: 1.5em;
+    color: #fff;
     margin: 40px auto;
     max-width: 800px;
-    color: #ffdd57;
-    text-shadow: 0 0 10px #ffdd57, 0 0 20px #ffdd57, 0 0 30px #ffdd57;
+    line-height: 1.6;
+    border-left: 5px solid #4285f4; /* Vertical line for emphasis */
+    padding-left: 20px; /* Space between border and text */
 }
 
-/* FAQ Styles */
-.faq-item {
+/* Timeline Section */
+#timeline {
+    padding: 80px 20px;
+    text-align: center;
+    background: #111; /* Darker background for contrast */
+    color: #fff;
+}
+
+#timeline h2 {
+    font-size: 2.5em;
+    color: #4285f4;
+    margin-bottom: 20px;
+}
+
+#timeline p {
+    font-size: 1.2em;
     margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+#timeline ul {
+    list-style: none;
+    padding: 0;
+}
+
+#timeline ul li {
+    font-size: 1.5em;
+    margin: 10px 0;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent list item background */
+    border-radius: 5px; /* Rounded corners */
+}
+
+#timeline img {
+    margin-top: 40px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; /* Rounded corners for images */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Shadow effect for depth */
+}
+
+/* Community Section */
+#community {
+    padding: 80px 20px;
+    background: rgba(0, 0, 0, 0.9); /* Darker semi-transparent background */
+    color: #fff;
+}
+
+#community h2 {
+    font-size: 2.5em;
+    color: #4285f4;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#community p {
+    font-size: 1.2em;
+    line-height: 1.8;
+    text-align: center;
+}
+
+/* FAQ Section */
+#faq {
+    padding: 80px 20px;
+    background: #000; /* Solid black background for contrast */
+    color: #fff;
+}
+
+#faq h2 {
+    font-size: 2.5em;
+    color: #4285f4;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.faq-item {
+    margin: 20px 0;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05); /* Slightly transparent background for contrast */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Shadow to add depth */
 }
 
 .faq-item h3 {
-    font-size: 24px;
+    font-size: 1.8em;
+    color: #fff;
     margin-bottom: 10px;
-    color: #00ccff;
-    text-shadow: 0 0 5px #00ccff;
 }
 
 .faq-item p {
-    font-size: 18px;
-    color: #ffffff;
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #ccc;
 }
 
-/* Buy Button */
-.buy-button {
-    display: inline-block;
-    padding: 15px 30px;
-    background-color: #1e90ff;
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 18px;
-    margin-top: 20px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.buy-button:hover {
-    background-color: #63b8ff;
-}
-
-/* Footer Styles */
-footer {
-    text-align: center;
-    padding: 40px 20px;
-    background-color: rgba(0, 0, 0, 0.9);
-    border-top: 2px solid #040488;
-    position: relative;
-    z-index: 1000;
-}
-
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.footer-content p {
-    margin: 10px 0;
-}
-
-.disclaimer {
-    font-size: 14px;
-    color: #888888;
-}
-
-.final-message {
-    font-size: 16px;
-    margin-top: 20px;
-    color: #ffffff;
-}
-
-/* Quantum Computer Mode Styles */
-body.quantum-mode {
-    background-color: #000000;
-    direction: ltr; /* Reset direction */
-    overflow: auto; /* Allow scrolling */
-}
-
-body.quantum-mode #main-content {
-    display: none; /* Hide main content in Quantum Computer mode */
-}
-
-body.quantum-mode .language-selector {
-    color: #00ccff;
-}
-
-body.quantum-mode #language-select {
-    background-color: #000000;
-    color: #00ccff;
-    border: 1px solid #00ccff;
-}
-
-body.quantum-mode #language-select option {
-    background-color: #000000;
-    color: #00ccff;
-}
-
-/* RTL Styles */
-[dir="rtl"] .language-selector {
-    right: auto;
-    left: 10px;
-}
-
-[dir="rtl"] header {
-    text-align: center;
-}
-
-[dir="rtl"] .contract-address {
-    justify-content: center;
-    text-align: center;
-}
-
-[dir="rtl"] .social-icons {
-    justify-content: center;
-}
-
-[dir="rtl"] .contract-address span:first-child {
-    margin-right: 10px;
-    margin-left: 0;
-}
-
-/* Responsive Adjustments */
+/* Media Queries for Responsiveness */
 @media (max-width: 768px) {
-    .header-content h1 {
-        font-size: 32px;
+    .header-content {
+        padding: 60px 10px; /* Reduce padding for smaller screens */
     }
 
-    .header-content p {
-        font-size: 18px;
+    .enhanced-glow {
+        font-size: 2.5em; /* Reduce font size for smaller screens */
     }
 
-    .social-icons a {
-        font-size: 1.2rem;
+    .welcome-message {
+        font-size: 1.2em; /* Reduce font size for better mobile view */
     }
 
-    .contract-address {
-        flex-direction: column;
-        text-align: center;
+    #about h2, #timeline h2, #community h2, #faq h2 {
+        font-size: 2em; /* Adjust section headings for mobile */
     }
 
-    .contract-address button {
-        margin: 10px 0 0 0;
-    }
-
-    .binary-text {
-        font-size: 10px;
+    .logo {
+        width: 120px; /* Smaller logo for mobile */
     }
 }
