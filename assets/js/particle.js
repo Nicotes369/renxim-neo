@@ -35,6 +35,7 @@ function initParticleEffect() {
     const particleSystem = new THREE.Points(particles, particleMaterial);
     scene.add(particleSystem);
 
+    
     // アニメーションループ
     function animateParticles() {
         requestAnimationFrame(animateParticles);
