@@ -1,4 +1,5 @@
 // assets/js/main.js
+
 // DOMContentLoadedイベント
 document.addEventListener('DOMContentLoaded', () => {
     // コントラクトアドレスのコピー機能
