@@ -1,5 +1,4 @@
 // assets/js/binary.js
-
 // バイナリレインエフェクトの実装
 function initBinaryRain() {
     const binaryContainer = document.createElement('div');
@@ -15,7 +14,6 @@ function initBinaryRain() {
         stream.classList.add('binary-stream');
         stream.style.left = i * 20 + 'px';
 
-        
         // 白色ネオンをランダムに適用
         if (Math.random() < 0.05) {
             stream.classList.add('white');
@@ -49,7 +47,6 @@ function initBinaryRain() {
         return result.trim();
     }
 
-    
     // ウィンドウリサイズ時の処理
     window.addEventListener('resize', function() {
         binaryContainer.remove();
