@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ugcForm.addEventListener('submit', handleUgcSubmit);
 });
 
+
 // リアルタイムデータの取得関数
 function fetchRealTimeData() {
     // ここでAPIからデータを取得します（APIのエンドポイントは仮定）
