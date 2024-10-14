@@ -1,0 +1,34 @@
+/* assets/css/particles.css */
+
+/* Particle Background */
+#particle-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #04040c;
+    overflow: hidden;
+    z-index: -1;
+}
+
+/* Particle Styles */
+.particle {
+    position: absolute;
+    background-color: #00ccff;
+    border-radius: 50%;
+    opacity: 0.8;
+    pointer-events: none;
+    animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(-10vh);
+        opacity: 1;
+    }
+}
