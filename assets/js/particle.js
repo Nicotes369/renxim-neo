@@ -1,55 +1,31 @@
-// assets/js/particle.js
+// assets/js/particles.js
 
-// パーティクルエフェクトの初期化
-function initParticleEffect() {
-    // Three.js を使用してパーティクルを初期化
-    // シーン、カメラ、レンダラーの作成
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 5000);
-    camera.position.z = 1000;
+(function() {
+    const particleCount = 100; // Number of particles
+    const particleContainer = document.getElementById('particle-background');
+    const particles = [];
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.getElementById('particle-container').appendChild(renderer.domElement);
-
-    // パーティクルの設定
-    const particles = new THREE.BufferGeometry();
-    const particleCount = 2000;
-    const positions = new Float32Array(particleCount * 3);
-
-    for (let i = 0; i < particleCount; i++) {
-        positions[i * 3] = (Math.random() * 2 - 1) * 1000;
-        positions[i * 3 + 1] = (Math.random() * 2 - 1) * 1000;
-        positions[i * 3 + 2] = (Math.random() * 2 - 1) * 1000;
+    function createParticles() {
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            resetParticle(particle);
+            particleContainer.appendChild(particle);
+            particles.push(particle);
+        }
     }
 
-    particles.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
-    const particleMaterial = new THREE.PointsMaterial({
-        color: 0x00ccff,
-        size: 2,
-        transparent: true,
-        blending: THREE.AdditiveBlending,
-    });
-
-    const particleSystem = new THREE.Points(particles, particleMaterial);
-    scene.add(particleSystem);
-
-    // アニメーションループ
-    function animateParticles() {
-        requestAnimationFrame(animateParticles);
-        particleSystem.rotation.y += 0.0005;
-        renderer.render(scene, camera);
+    function resetParticle(particle) {
+        particle.style.width = `${Math.random() * 4 + 2}px`;
+        particle.style.height = particle.style.width;
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
+        particle.style.animationDuration = `${Math.random() * 20 + 10}s`;
+        particle.style.animationDelay = `${Math.random() * -30}s`;
     }
 
-    animateParticles();
-
-    // ウィンドウリサイズ時の処理
-    window.addEventListener('resize', function() {
-        const width = window.innerWidth;
-        const height = window.innerHeight;
-        renderer.setSize(width, height);
-        camera.aspect = width / height;
-        camera.updateProjectionMatrix();
+    // Initialize particles on DOMContentLoaded
+    document.addEventListener('DOMContentLoaded', () => {
+        createParticles();
     });
-}
+})();
