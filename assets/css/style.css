@@ -4,170 +4,148 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Orbitron', 'Noto Sans JP', 'Arial Unicode MS', sans-serif;
-    background-color: #000000; /* 背景色を黒に統一 */
+    font-family: 'Orbitron', 'Noto Sans JP', sans-serif;
+    background-color: #0e0e0e; /* 深みのあるダークカラー */
     color: #ffffff;
-    direction: ltr; /* デフォルトのテキスト方向 */
+    direction: ltr; /* Default direction */
 }
 
-/* Navigation Bar */
-#navbar {
-    position: fixed;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+/* Enhanced Glow Effect for Catchphrase */
+.enhanced-glow {
+    text-shadow: 0 0 20px #00ccff, 0 0 30px #00ccff, 0 0 40px #0099cc;
+    animation: pulseGlow 2s infinite;
 }
 
-#navbar .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-}
-
-#navbar .logo img {
-    width: 50px; /* ロゴサイズを大きく調整 */
-}
-
-.nav-menu {
-    display: flex;
-    list-style: none;
-    margin: 0;
-}
-
-.nav-menu li {
-    margin-left: 20px;
-}
-
-.nav-menu li a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 18px; /* フォントサイズを大きく調整 */
-    transition: color 0.3s;
-}
-
-.nav-menu li a:hover {
-    color: #00ccff;
+@keyframes pulseGlow {
+    0% {
+        text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #0099cc;
+    }
+    50% {
+        text-shadow: 0 0 20px #00ccff, 0 0 30px #00ccff, 0 0 40px #0099cc;
+    }
+    100% {
+        text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #0099cc;
+    }
 }
 
 /* Language Selector */
 .language-selector {
-    position: relative;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
 }
 
 #language-select {
     padding: 8px 12px;
     font-size: 16px;
-    background-color: #000000;
+    background-color: #1e1e1e;
     color: #ffffff;
-    border: 1px solid #00ccff;
+    border: 1px solid #444444;
     border-radius: 5px;
     cursor: pointer;
 }
 
-/* Menu Toggle for Mobile */
-.menu-toggle {
-    display: none;
-    font-size: 24px;
+#language-select option {
+    background-color: #1e1e1e;
     color: #ffffff;
-    cursor: pointer;
-}
-
-/* Particle Background */
-#particle-background {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: #000000;
-    z-index: -1;
 }
 
 /* Header Styles */
-#header {
+header {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 200px 20px 100px;
-    background: transparent;
+    padding: 150px 20px 100px 20px;
     position: relative;
-    z-index: 1;
+    z-index: 1000;
     text-align: center;
 }
 
-#header h1 {
-    font-size: 64px; /* フォントサイズを大きく調整 */
+/* Logo */
+.logo {
+    width: 200px;
+    margin-bottom: 30px;
+}
+
+/* Header Titles */
+.header-content h1 {
+    font-size: 60px;
     margin-bottom: 20px;
     color: #00ccff;
-    text-shadow: 0 0 20px #00ccff, 0 0 30px #00ccff;
 }
 
-#header h2 {
-    font-size: 32px; /* フォントサイズを大きく調整 */
+.header-content h2 {
+    font-size: 30px;
     margin-bottom: 20px;
     color: #ffffff;
 }
 
-#header p {
+/* Welcome Message */
+.welcome-message {
     font-size: 24px;
-    color: #ffffff;
+    margin-bottom: 40px;
+    color: #dddddd;
 }
 
-/* Enhanced Glow Effect */
-.enhanced-glow {
-    text-shadow: 0 0 20px #00ccff, 0 0 30px #00ccff, 0 0 40px #00ccff;
-    animation: pulseGlow 2s infinite;
-}
-
-@keyframes pulseGlow {
-    0%, 100% {
-        text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #00ccff;
-    }
-    50% {
-        text-shadow: 0 0 30px #00ccff, 0 0 40px #00ccff, 0 0 50px #00ccff;
-    }
-}
-
-/* Contract Address */
+/* Contract Address Styles */
 .contract-address {
-    margin: 20px 0;
+    margin-bottom: 30px;
 }
 
 .contract-address span:first-child {
     display: block;
+    font-weight: bold;
     font-size: 20px;
     margin-bottom: 10px;
-    font-weight: bold;
+    color: #00ccff;
 }
 
-.address-copy {
+.address-box {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.address-copy span#contract-address {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #1e1e1e;
     padding: 10px 15px;
-    border-radius: 5px 0 0 5px;
-    font-size: 16px;
-    overflow-wrap: break-word;
+    border-radius: 5px;
+    border: 1px solid #444444;
 }
 
-.address-copy button {
-    padding: 10px 20px;
+#contract-address {
+    font-weight: bold;
+    font-size: 18px;
+    color: #ffffff;
+    margin-right: 10px;
+}
+
+.address-box button {
+    padding: 8px 15px;
     font-size: 16px;
-    background-color: #1e90ff;
+    cursor: pointer;
+    background-color: #00ccff;
     color: #ffffff;
     border: none;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    border-radius: 5px;
 }
 
-.address-copy button:hover {
-    background-color: #63b8ff;
+.address-box button:hover {
+    background-color: #0099cc;
+}
+
+/* Copy Confirmation */
+.copy-confirmation {
+    color: #ffdd57;
+    margin-left: 10px;
+    font-weight: bold;
+    animation: fadeInOut 2s forwards;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
 }
 
 /* Social Icons */
@@ -177,135 +155,134 @@ body {
     margin-top: 20px;
 }
 
-.social-icons a {
+.social-icon-link {
     color: #ffffff;
     margin: 0 10px;
-    font-size: 32px; /* アイコンサイズを大きく調整 */
+    font-size: 2rem;
     transition: color 0.3s;
 }
 
-.social-icons a:hover {
+.social-icon-link:hover {
     color: #00ccff;
 }
 
-/* Sections */
+/* Section Styles */
 section {
     padding: 80px 20px;
-    background-color: transparent;
-    position: relative;
-    z-index: 1;
+    background-color: #121212;
+    margin-bottom: 40px;
+    border-radius: 10px;
+    text-align: center;
+    color: #ffffff;
 }
 
 section h2 {
     font-size: 36px;
     margin-bottom: 40px;
     color: #00ccff;
-    text-align: center;
-    text-shadow: 0 0 10px #00ccff;
 }
 
 section p, section ul {
-    font-size: 20px; /* フォントサイズを大きく調整 */
-    line-height: 1.8;
-    color: #ffffff;
-    max-width: 800px;
-    margin: 0 auto 20px;
-}
-
-/* Timeline */
-.timeline-list {
-    list-style: none;
-    padding: 0;
-}
-
-.timeline-list li {
-    margin-bottom: 10px;
     font-size: 20px;
-    color: #ffffff;
-}
-
-.responsive-img {
-    width: 100%;
+    line-height: 1.6;
     max-width: 800px;
-    height: auto;
-    display: block;
-    margin: 20px auto;
+    margin: 0 auto 20px auto;
+    color: #dddddd;
 }
 
-/* FAQ Accordion */
+blockquote {
+    font-size: 24px;
+    font-style: italic;
+    margin: 40px auto;
+    max-width: 800px;
+    color: #ffdd57;
+    text-shadow: 0 0 10px #ffdd57, 0 0 20px #ffdd57;
+}
+
+/* FAQ Styles */
 .faq-item {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
-.faq-question {
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.1);
-    border: none;
-    padding: 15px 20px;
-    text-align: left;
-    font-size: 20px; /* フォントサイズを大きく調整 */
-    color: #ffffff;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.faq-item h3 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #00ccff;
 }
 
 .faq-answer {
-    padding: 0 20px;
-    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 20px;
+    color: #dddddd;
 }
 
 .faq-answer p {
-    padding: 15px 0;
-    font-size: 18px;
-}
-
-.faq-question i {
-    transition: transform 0.3s;
-}
-
-.faq-question[aria-expanded="true"] i {
-    transform: rotate(180deg);
+    margin-bottom: 20px;
 }
 
 /* Buy Button */
 .buy-button {
     display: inline-block;
     padding: 15px 30px;
-    background-color: #1e90ff;
+    background-color: #00ccff;
     color: #ffffff;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 20px;
     margin-top: 20px;
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
 .buy-button:hover {
-    background-color: #63b8ff;
+    background-color: #0099cc;
 }
 
-/* Footer */
+/* Footer Styles */
 footer {
-    background-color: rgba(0, 0, 0, 0.9);
-    padding: 40px 20px;
     text-align: center;
+    padding: 60px 20px;
+    background-color: #0e0e0e;
+    border-top: 2px solid #00ccff;
 }
 
-footer p {
-    color: #ffffff;
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-content p {
     margin: 10px 0;
+    color: #dddddd;
 }
 
-/* Loading Screen */
-#loading-screen {
+.disclaimer {
+    font-size: 16px;
+    color: #888888;
+}
+
+.final-message {
+    font-size: 18px;
+    margin-top: 20px;
+    color: #ffffff;
+}
+
+/* Particle Background */
+#particle-background {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: #000000;
+    z-index: -1;
+}
+
+/* Loading Animation */
+#loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0e0e0e;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -313,94 +290,48 @@ footer p {
 }
 
 .loader {
-    width: 100px;
-    height: 100px;
-    position: relative;
-}
-
-.quantum-loader {
-    width: 100%;
-    height: 100%;
-    border: 5px solid transparent;
-    border-top: 5px solid #00ccff;
-    border-right: 5px solid #00ccff;
+    border: 10px solid #1e1e1e;
+    border-top: 10px solid #00ccff;
     border-radius: 50%;
-    animation: spin 2s linear infinite;
+    width: 80px;
+    height: 80px;
+    animation: spin 1.5s linear infinite;
 }
 
 @keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
-/* Media Queries */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
-    #header h1 {
-        font-size: 48px;
+    .header-content h1 {
+        font-size: 40px;
     }
 
-    #header h2 {
+    .header-content h2 {
         font-size: 24px;
     }
 
-    .nav-menu {
-        display: none;
-        flex-direction: column;
-        background-color: rgba(0, 0, 0, 0.9);
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 200px;
+    .welcome-message {
+        font-size: 18px;
     }
 
-    .nav-menu li {
-        margin: 0;
+    .faq-item h3 {
+        font-size: 24px;
     }
 
-    .nav-menu li a {
-        padding: 10px 20px;
-        display: block;
-    }
-
-    .menu-toggle {
-        display: block;
+    .buy-button {
+        font-size: 18px;
     }
 }
 
-/* Accessibility Focus Styles */
-:focus {
-    outline: 2px dashed #00ccff;
-    outline-offset: 4px;
+/* Quantum Computer Mode Styles */
+body.quantum-mode {
+    background-color: #000000;
+    overflow: hidden;
 }
 
-:focus:not(:focus-visible) {
-    outline: none;
-}
-
-/* Additional Styles for Proposals */
-
-/* Parallax Effect */
-#header {
-    background-attachment: fixed;
-}
-
-/* Particle Background Adjustments */
-#particle-background canvas {
-    display: block;
-}
-
-/* 3D Object Styles */
-#three-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -2;
-}
-
-/* Adjustments for Quantum Computer Mode */
 body.quantum-mode #main-content {
     display: none;
 }
@@ -409,106 +340,26 @@ body.quantum-mode #binary-container {
     display: block;
 }
 
-/* Scrollbar Visibility */
-body {
-    overflow-y: auto;
+body.quantum-mode #particle-background {
+    display: none;
 }
 
-body.quantum-mode {
-    overflow: hidden;
+/* RTL Styles */
+[dir="rtl"] .language-selector {
+    right: auto;
+    left: 20px;
 }
 
-/* Additional Styling for White Neon Bits */
-.binary-text.white-neon {
-    color: #ffffff;
-    text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff;
+[dir="rtl"] .address-box {
+    flex-direction: row-reverse;
 }
 
-/* Style for Copy Confirmation Message */
-.copy-confirmation {
-    color: #ffdd57;
+[dir="rtl"] .address-box #contract-address {
+    margin-right: 0;
     margin-left: 10px;
-    font-weight: bold;
-    animation: fadeInOut 2s forwards;
 }
 
-@keyframes fadeInOut {
-    0% { opacity: 1; }
-    100% { opacity: 0; }
+/* Custom Cursor */
+body {
+    cursor: url('assets/images/custom-cursor.png'), auto;
 }
-
-/* Adjustments for Improved Readability */
-p, li, a, span, button {
-    font-size: 18px;
-}
-
-/* Adjustments for Icons */
-.social-icon-link {
-    font-size: 28px;
-}
-
-/* Adjustments for Buttons */
-button, .buy-button {
-    font-size: 18px;
-    padding: 12px 24px;
-}
-
-/* Adjustments for Input Fields */
-input, select {
-    font-size: 16px;
-    padding: 8px 12px;
-}
-
-/* Style for Active Navigation Links */
-.nav-menu li a.active {
-    color: #00ccff;
-    border-bottom: 2px solid #00ccff;
-}
-
-/* Style for Loading Screen Text */
-#loading-screen .loader-text {
-    margin-top: 20px;
-    color: #00ccff;
-    font-size: 18px;
-    text-align: center;
-}
-
-/* Adjustments for Accessibility */
-.visually-hidden {
-    position: absolute;
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-}
-
-/* Tooltip Styles */
-.tooltip {
-    position: relative;
-    display: inline-block;
-}
-
-.tooltip .tooltip-text {
-    visibility: hidden;
-    width: 140px;
-    background-color: #000000;
-    color: #ffffff;
-    text-align: center;
-    border-radius: 5px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1001;
-    bottom: 125%; /* Position above the element */
-    left: 50%;
-    margin-left: -70px;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.tooltip:hover .tooltip-text {
-    visibility: visible;
-    opacity: 1;
-}
-
-/* End of assets/css/style.css */
