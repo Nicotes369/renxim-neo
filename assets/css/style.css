@@ -4,177 +4,169 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Noto Sans JP', 'Orbitron', 'Arial Unicode MS', sans-serif;
-    background-color: #04040c;
+    font-family: 'Orbitron', 'Noto Sans JP', 'Arial Unicode MS', sans-serif;
+    background-color: #000000; /* 背景色を黒に統一 */
     color: #ffffff;
-    overflow-x: hidden;
+    direction: ltr; /* デフォルトのテキスト方向 */
 }
 
-/* Loading Screen */
-#loading-screen {
+/* Navigation Bar */
+#navbar {
     position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
-    background-color: #04040c;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+#navbar .container {
     display: flex;
     align-items: center;
-    justify-content: center;
-    z-index: 10000;
+    justify-content: space-between;
+    padding: 10px 20px;
 }
 
-.loader {
-    width: 80px;
-    height: 80px;
-    border: 10px solid #1e1e2e;
-    border-top: 10px solid #00ccff;
-    border-radius: 50%;
-    animation: spin 1.5s linear infinite;
+#navbar .logo img {
+    width: 50px; /* ロゴサイズを大きく調整 */
 }
 
-@keyframes spin {
-    to { transform: rotate(360deg); }
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+}
+
+.nav-menu li {
+    margin-left: 20px;
+}
+
+.nav-menu li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px; /* フォントサイズを大きく調整 */
+    transition: color 0.3s;
+}
+
+.nav-menu li a:hover {
+    color: #00ccff;
+}
+
+/* Language Selector */
+.language-selector {
+    position: relative;
+}
+
+#language-select {
+    padding: 8px 12px;
+    font-size: 16px;
+    background-color: #000000;
+    color: #ffffff;
+    border: 1px solid #00ccff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Menu Toggle for Mobile */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    color: #ffffff;
+    cursor: pointer;
 }
 
 /* Particle Background */
 #particle-background {
     position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
+    background: #000000;
     z-index: -1;
-    background-color: #04040c;
-}
-
-/* Language Selector */
-.language-selector {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    z-index: 1001;
-}
-
-#language-select {
-    padding: 8px 12px;
-    font-size: 18px;
-    background-color: #ffffff;
-    color: #000000;
-    border: 1px solid #cccccc;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-#language-select:hover {
-    background-color: #f0f0f0;
 }
 
 /* Header Styles */
-header {
-    position: relative;
+#header {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    color: #ffffff;
-    text-align: center;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.header-content {
+    padding: 200px 20px 100px;
+    background: transparent;
     position: relative;
-    z-index: 2;
-    max-width: 800px;
-    padding: 20px;
+    z-index: 1;
+    text-align: center;
 }
 
-.logo {
-    width: 200px;
-    margin-bottom: 20px;
-}
-
-.header-content h1 {
-    font-size: 64px;
+#header h1 {
+    font-size: 64px; /* フォントサイズを大きく調整 */
     margin-bottom: 20px;
     color: #00ccff;
-    text-shadow: 0 0 20px #00ccff, 0 0 30px #00ccff, 0 0 40px #0099cc;
+    text-shadow: 0 0 20px #00ccff, 0 0 30px #00ccff;
 }
 
-.header-content h2 {
-    font-size: 32px;
+#header h2 {
+    font-size: 32px; /* フォントサイズを大きく調整 */
     margin-bottom: 20px;
     color: #ffffff;
 }
 
-.header-content p {
+#header p {
     font-size: 24px;
-    margin-bottom: 40px;
     color: #ffffff;
 }
 
 /* Enhanced Glow Effect */
 .enhanced-glow {
+    text-shadow: 0 0 20px #00ccff, 0 0 30px #00ccff, 0 0 40px #00ccff;
     animation: pulseGlow 2s infinite;
 }
 
 @keyframes pulseGlow {
     0%, 100% {
-        text-shadow: 0 0 20px #00ccff, 0 0 30px #00ccff, 0 0 40px #0099cc;
+        text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #00ccff;
     }
     50% {
-        text-shadow: 0 0 40px #00ccff, 0 0 60px #00ccff, 0 0 80px #0099cc;
+        text-shadow: 0 0 30px #00ccff, 0 0 40px #00ccff, 0 0 50px #00ccff;
     }
 }
 
-/* Contract Address Styles */
+/* Contract Address */
 .contract-address {
-    margin-bottom: 30px;
+    margin: 20px 0;
 }
 
-.contract-label {
+.contract-address span:first-child {
     display: block;
-    font-size: 24px;
+    font-size: 20px;
     margin-bottom: 10px;
+    font-weight: bold;
 }
 
 .address-copy {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.address-copy span#contract-address {
     background-color: rgba(255, 255, 255, 0.1);
-    padding: 15px 20px;
-    border-radius: 5px;
-    transition: box-shadow 0.5s;
+    padding: 10px 15px;
+    border-radius: 5px 0 0 5px;
+    font-size: 16px;
+    overflow-wrap: break-word;
 }
 
-.address-copy:hover {
-    box-shadow: 0 0 20px #00ccff, 0 0 30px #00ccff, 0 0 40px #00ccff;
-}
-
-#contract-address {
-    font-size: 20px;
-    font-weight: bold;
-    margin-right: 10px;
-    word-break: break-all;
-}
-
-.contract-address button {
+.address-copy button {
     padding: 10px 20px;
-    font-size: 18px;
-    cursor: pointer;
+    font-size: 16px;
     background-color: #1e90ff;
     color: #ffffff;
     border: none;
-    border-radius: 5px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.contract-address button:hover {
+.address-copy button:hover {
     background-color: #63b8ff;
 }
 
@@ -187,8 +179,8 @@ header {
 
 .social-icons a {
     color: #ffffff;
-    margin: 0 15px;
-    font-size: 2rem;
+    margin: 0 10px;
+    font-size: 32px; /* アイコンサイズを大きく調整 */
     transition: color 0.3s;
 }
 
@@ -196,86 +188,85 @@ header {
     color: #00ccff;
 }
 
-/* Section Styles */
+/* Sections */
 section {
+    padding: 80px 20px;
+    background-color: transparent;
     position: relative;
-    padding: 100px 20px;
-    background-color: rgba(0, 0, 0, 0.8);
-    text-align: center;
+    z-index: 1;
 }
 
 section h2 {
-    font-size: 48px;
+    font-size: 36px;
     margin-bottom: 40px;
     color: #00ccff;
-    text-shadow: 0 0 20px #00ccff, 0 0 30px #00ccff, 0 0 40px #0099cc;
+    text-align: center;
+    text-shadow: 0 0 10px #00ccff;
 }
 
-section p {
-    font-size: 24px;
-    line-height: 1.6;
-    max-width: 1000px;
-    margin: 0 auto 30px auto;
+section p, section ul {
+    font-size: 20px; /* フォントサイズを大きく調整 */
+    line-height: 1.8;
+    color: #ffffff;
+    max-width: 800px;
+    margin: 0 auto 20px;
+}
+
+/* Timeline */
+.timeline-list {
+    list-style: none;
+    padding: 0;
+}
+
+.timeline-list li {
+    margin-bottom: 10px;
+    font-size: 20px;
     color: #ffffff;
 }
 
-blockquote {
-    font-size: 28px;
-    font-style: italic;
-    max-width: 1000px;
-    margin: 50px auto;
-    color: #ffdd57;
-    text-shadow: 0 0 20px #ffdd57, 0 0 30px #ffdd57, 0 0 40px #ffdd57;
-}
-
-/* 3D Quantum Object */
-#quantum-3d-object {
+.responsive-img {
     width: 100%;
-    height: 500px;
-    margin-top: 50px;
-}
-
-/* Timeline Image */
-.timeline-image {
-    width: 80%;
     max-width: 800px;
-    margin: 40px auto;
-    border: 2px solid #00ccff;
-    border-radius: 10px;
+    height: auto;
+    display: block;
+    margin: 20px auto;
 }
 
-/* FAQ Styles */
+/* FAQ Accordion */
 .faq-item {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 .faq-question {
-    font-size: 28px;
-    margin-bottom: 10px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    padding: 15px 20px;
+    text-align: left;
+    font-size: 20px; /* フォントサイズを大きく調整 */
+    color: #ffffff;
     cursor: pointer;
-    position: relative;
-}
-
-.faq-question::after {
-    content: '+';
-    position: absolute;
-    right: 0;
-    font-size: 28px;
-}
-
-.faq-item.open .faq-question::after {
-    content: '-';
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .faq-answer {
-    display: none;
-    font-size: 20px;
-    color: #ffffff;
-    line-height: 1.6;
+    padding: 0 20px;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
-.faq-item.open .faq-answer {
-    display: block;
+.faq-answer p {
+    padding: 15px 0;
+    font-size: 18px;
+}
+
+.faq-question i {
+    transition: transform 0.3s;
+}
+
+.faq-question[aria-expanded="true"] i {
+    transform: rotate(180deg);
 }
 
 /* Buy Button */
@@ -285,7 +276,7 @@ blockquote {
     background-color: #1e90ff;
     color: #ffffff;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 18px;
     margin-top: 20px;
     border-radius: 5px;
     transition: background-color 0.3s ease;
@@ -295,183 +286,229 @@ blockquote {
     background-color: #63b8ff;
 }
 
-/* Footer Styles */
+/* Footer */
 footer {
-    text-align: center;
-    padding: 60px 20px;
     background-color: rgba(0, 0, 0, 0.9);
-    position: relative;
-    z-index: 1000;
+    padding: 40px 20px;
+    text-align: center;
 }
 
-.footer-content p {
+footer p {
+    color: #ffffff;
     margin: 10px 0;
 }
 
-.disclaimer {
-    font-size: 18px;
-    color: #888888;
+/* Loading Screen */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
 }
 
-.final-message {
-    font-size: 20px;
-    margin-top: 20px;
-    color: #ffffff;
+.loader {
+    width: 100px;
+    height: 100px;
+    position: relative;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 1024px) {
-    .header-content h1 {
+.quantum-loader {
+    width: 100%;
+    height: 100%;
+    border: 5px solid transparent;
+    border-top: 5px solid #00ccff;
+    border-right: 5px solid #00ccff;
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    #header h1 {
         font-size: 48px;
     }
-    .header-content h2 {
-        font-size: 28px;
-    }
-    .header-content p {
-        font-size: 20px;
-    }
-    section h2 {
-        font-size: 36px;
-    }
-    section p, blockquote {
-        font-size: 20px;
-    }
-    .faq-question {
+
+    #header h2 {
         font-size: 24px;
     }
-    .faq-answer {
-        font-size: 18px;
-    }
-}
 
-@media (max-width: 768px) {
-    .logo {
-        width: 150px;
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        background-color: rgba(0, 0, 0, 0.9);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
     }
-    #contract-address {
-        font-size: 18px;
-    }
-    .contract-address button {
-        font-size: 16px;
-    }
-    .social-icons a {
-        font-size: 1.5rem;
-        margin: 0 10px;
-    }
-    .buy-button {
-        font-size: 18px;
-        padding: 12px 25px;
-    }
-}
 
-@media (max-width: 480px) {
-    .header-content h1 {
-        font-size: 36px;
+    .nav-menu li {
+        margin: 0;
     }
-    .header-content h2 {
-        font-size: 24px;
-    }
-    .header-content p {
-        font-size: 18px;
-    }
-    .contract-label, #contract-address, .contract-address button {
-        font-size: 16px;
-    }
-    section h2 {
-        font-size: 28px;
-    }
-    section p, blockquote {
-        font-size: 18px;
-    }
-    .faq-question {
-        font-size: 20px;
-    }
-    .faq-answer {
-        font-size: 16px;
-    }
-    .buy-button {
-        font-size: 16px;
+
+    .nav-menu li a {
         padding: 10px 20px;
+        display: block;
+    }
+
+    .menu-toggle {
+        display: block;
     }
 }
 
-/* Accessibility */
-.visually-hidden {
-    position: absolute;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    width: 1px;
-    margin: -1px;
-    padding: 0;
-    border: 0;
+/* Accessibility Focus Styles */
+:focus {
+    outline: 2px dashed #00ccff;
+    outline-offset: 4px;
 }
+
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Additional Styles for Proposals */
 
 /* Parallax Effect */
-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('assets/images/background.jpg');
-    background-size: cover;
-    background-position: center;
-    z-index: -1;
-    transform: translateZ(-1px) scale(2);
-    transform-origin: center;
-}
-
-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+#header {
     background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-    z-index: -1;
 }
 
-/* Scrollbar Styling */
-::-webkit-scrollbar {
-    width: 10px;
+/* Particle Background Adjustments */
+#particle-background canvas {
+    display: block;
 }
 
-::-webkit-scrollbar-track {
-    background: #1e1e2e;
+/* 3D Object Styles */
+#three-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
 }
 
-::-webkit-scrollbar-thumb {
-    background: #00ccff;
-    border-radius: 5px;
-}
-
-/* Quantum Computer Mode Styles */
-body.quantum-mode {
-    background-color: #000000;
-    overflow: hidden;
-}
-
+/* Adjustments for Quantum Computer Mode */
 body.quantum-mode #main-content {
     display: none;
 }
 
-body.quantum-mode .language-selector {
-    color: #00ccff;
+body.quantum-mode #binary-container {
+    display: block;
 }
 
-body.quantum-mode #language-select {
+/* Scrollbar Visibility */
+body {
+    overflow-y: auto;
+}
+
+body.quantum-mode {
+    overflow: hidden;
+}
+
+/* Additional Styling for White Neon Bits */
+.binary-text.white-neon {
+    color: #ffffff;
+    text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff;
+}
+
+/* Style for Copy Confirmation Message */
+.copy-confirmation {
+    color: #ffdd57;
+    margin-left: 10px;
+    font-weight: bold;
+    animation: fadeInOut 2s forwards;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Adjustments for Improved Readability */
+p, li, a, span, button {
+    font-size: 18px;
+}
+
+/* Adjustments for Icons */
+.social-icon-link {
+    font-size: 28px;
+}
+
+/* Adjustments for Buttons */
+button, .buy-button {
+    font-size: 18px;
+    padding: 12px 24px;
+}
+
+/* Adjustments for Input Fields */
+input, select {
+    font-size: 16px;
+    padding: 8px 12px;
+}
+
+/* Style for Active Navigation Links */
+.nav-menu li a.active {
+    color: #00ccff;
+    border-bottom: 2px solid #00ccff;
+}
+
+/* Style for Loading Screen Text */
+#loading-screen .loader-text {
+    margin-top: 20px;
+    color: #00ccff;
+    font-size: 18px;
+    text-align: center;
+}
+
+/* Adjustments for Accessibility */
+.visually-hidden {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* Tooltip Styles */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    width: 140px;
     background-color: #000000;
-    color: #00ccff;
-    border: 1px solid #00ccff;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1001;
+    bottom: 125%; /* Position above the element */
+    left: 50%;
+    margin-left: -70px;
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 
-body.quantum-mode #language-select option {
-    background-color: #000000;
-    color: #00ccff;
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
 }
 
+/* End of assets/css/style.css */
