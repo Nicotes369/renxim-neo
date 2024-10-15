@@ -1,20 +1,18 @@
 // assets/js/main.js
 
-// ドキュメントの読み込みを待ってから実行
-document.addEventListener('DOMContentLoaded', function() {
-
-    // コントラクトアドレスのコピー機能
-    const copyButton = document.querySelector('.address-copy button');
+// コントラクトアドレスのコピー機能とコピー完了時のエフェクト
+document.addEventListener('DOMContentLoaded', () => {
+    const copyButton = document.querySelector('.contract-address button');
     const addressElement = document.getElementById('contract-address');
 
-    copyButton.addEventListener('click', function() {
+    copyButton.addEventListener('click', () => {
         const address = addressElement.innerText.trim();
         navigator.clipboard.writeText(address).then(() => {
-            // コピー成功時のエフェクトを追加
+            // コピー完了時の発光効果を追加
             addressElement.classList.add('copied');
 
             // 現在の言語を取得
-            const currentLang = document.documentElement.lang || 'en';
+            const currentLang = document.documentElement.getAttribute('lang') || 'en';
 
             // 各言語に対応するコピー完了メッセージ
             const messages = {
@@ -22,141 +20,139 @@ document.addEventListener('DOMContentLoaded', function() {
                 'ja': 'コピーが完了しました！',
                 'zh': '复制成功！',
                 'hi': 'कॉपी सफल!',
-                'fa': 'کپی موفقیت‌آمیز بود!',
+                'fa': 'کپی با موفقیت انجام شد!',
                 'ar': 'تم النسخ بنجاح!',
-                'he': 'ההעתקה הצליחה!',
-                'ru': 'Копирование успешно!',
+                'he': 'ההעתקה הושלמה!',
+                'ru': 'Копирование завершено!',
                 'de': 'Kopieren erfolgreich!',
-                'it': 'Copia avvenuta con successo!',
-                'es': '¡Copiado con éxito!',
-                'ko': '복사 성공!',
-                // 必要に応じて他の言語を追加
+                'it': 'Copia riuscita!',
+                'es': '¡Copia exitosa!',
+                'ko': '복사 완료!',
+                'qc': '|0⟩ Copy ⟩1|' // Quantum Computerモード用
             };
 
-            // メッセージを表示
+            // メッセージを作成
             const confirmation = document.createElement('span');
             confirmation.classList.add('copy-confirmation');
-            confirmation.innerText = messages[currentLang] || messages['en'];
+            confirmation.innerText = `${messages[currentLang] || messages['en']}`;
             addressElement.parentElement.appendChild(confirmation);
 
-            // 一定時間後にエフェクトとメッセージを削除
+            // 2秒後に発光効果とメッセージを削除
             setTimeout(() => {
                 addressElement.classList.remove('copied');
                 confirmation.remove();
             }, 2000);
-
         }).catch(err => {
-            // コピー失敗時のエラーメッセージ
+            // コピー失敗時のアラート
             alert('アドレスのコピーに失敗しました。');
             console.error('Error copying text: ', err);
         });
     });
+});
 
-    // FAQのアコーディオン機能
-    const faqItems = document.querySelectorAll('.faq-item');
+// FAQのアコーディオン機能
+document.addEventListener('DOMContentLoaded', () => {
+    const faqItems = document.querySelectorAll('.faq-item h3');
 
     faqItems.forEach(item => {
-        const questionButton = item.querySelector('.faq-question');
-        const answer = item.querySelector('.faq-answer');
+        item.addEventListener('click', () => {
+            const answer = item.nextElementSibling;
+            const icon = item.querySelector('.faq-icon');
 
-        questionButton.addEventListener('click', () => {
-            const isExpanded = questionButton.getAttribute('aria-expanded') === 'true';
-            questionButton.setAttribute('aria-expanded', !isExpanded);
-            if (isExpanded) {
-                answer.setAttribute('hidden', '');
+            // アコーディオンの開閉
+            if (answer.style.maxHeight) {
+                answer.style.maxHeight = null;
+                item.classList.remove('active');
             } else {
-                answer.removeAttribute('hidden');
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+                item.classList.add('active');
             }
         });
     });
+});
 
-    // モバイルメニューのトグル機能
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navMenu = document.querySelector('.nav-menu');
+// カスタムカーソルの設定
+document.addEventListener('DOMContentLoaded', () => {
+    const cursor = document.createElement('div');
+    cursor.id = 'custom-cursor';
+    document.body.appendChild(cursor);
 
-    menuToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        menuToggle.classList.toggle('active');
+    document.addEventListener('mousemove', e => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
     });
 
-    // ローディング画面の処理
-    window.addEventListener('load', () => {
-        const loadingScreen = document.getElementById('loading-screen');
-        loadingScreen.style.display = 'none';
-    });
-
-    // パーティクル背景の初期化
-    if (typeof particlesJS !== 'undefined') {
-        particlesJS.load('particle-background', 'assets/js/particles.json', function() {
-            console.log('Particles.js config loaded');
+    // リンクやボタンにホバーしたときのエフェクト
+    const hoverElements = document.querySelectorAll('a, button');
+    hoverElements.forEach(el => {
+        el.addEventListener('mouseover', () => {
+            cursor.classList.add('hover');
         });
-    }
-
-    // スクロール時のパララックス効果
-    window.addEventListener('scroll', function() {
-        const header = document.getElementById('header');
-        let scrollPosition = window.pageYOffset;
-        header.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
+        el.addEventListener('mouseout', () => {
+            cursor.classList.remove('hover');
+        });
     });
+});
 
-    // 3Dオブジェクトの初期化
-    if (typeof THREE !== 'undefined') {
+// サウンドエフェクトの設定
+document.addEventListener('DOMContentLoaded', () => {
+    const audio = new Audio('assets/sounds/click.mp3');
+    const clickableElements = document.querySelectorAll('a, button');
+
+    clickableElements.forEach(el => {
+        el.addEventListener('click', () => {
+            audio.currentTime = 0;
+            audio.play();
+        });
+    });
+});
+
+// 3Dモデルのロード
+document.addEventListener('DOMContentLoaded', () => {
+    const canvas = document.getElementById('quantum-canvas');
+
+    if (canvas) {
         // シーン、カメラ、レンダラーの設定
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ alpha: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
+        const camera = new THREE.PerspectiveCamera(60, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
+        renderer.setSize(canvas.clientWidth, canvas.clientHeight);
 
-        // 量子ビットを模したオブジェクトの作成
-        const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
-        const material = new THREE.MeshBasicMaterial({ color: 0x00ccff, wireframe: true });
-        const torusKnot = new THREE.Mesh(geometry, material);
-        scene.add(torusKnot);
+        // ライトの追加
+        const ambientLight = new THREE.AmbientLight(0xffffff, 1);
+        scene.add(ambientLight);
 
-        camera.position.z = 50;
+        // GLTFローダーを使用してモデルをロード
+        const loader = new THREE.GLTFLoader();
+        loader.load('models/quantum_model.glb', gltf => {
+            const model = gltf.scene;
+            scene.add(model);
 
-        function animate() {
-            requestAnimationFrame(animate);
-            torusKnot.rotation.x += 0.01;
-            torusKnot.rotation.y += 0.01;
-            renderer.render(scene, camera);
-        }
-        animate();
+            // モデルの位置とスケールを調整
+            model.position.set(0, 0, 0);
+            model.scale.set(1.5, 1.5, 1.5);
 
-        // ウィンドウリサイズ時の対応
-        window.addEventListener('resize', function() {
-            const width = window.innerWidth;
-            const height = window.innerHeight;
+            // アニメーションループ
+            function animate() {
+                requestAnimationFrame(animate);
+                model.rotation.y += 0.005;
+                renderer.render(scene, camera);
+            }
+
+            animate();
+        }, undefined, error => {
+            console.error('3Dモデルの読み込み中にエラーが発生しました:', error);
+        });
+
+        camera.position.z = 5;
+
+        // レスポンシブ対応
+        window.addEventListener('resize', () => {
+            const width = canvas.clientWidth;
+            const height = canvas.clientHeight;
             renderer.setSize(width, height);
             camera.aspect = width / height;
             camera.updateProjectionMatrix();
         });
     }
-
-    // アクセシビリティのためのキーボードナビゲーション
-    document.addEventListener('keyup', function(event) {
-        if (event.key === 'Tab') {
-            document.body.classList.add('user-is-tabbing');
-        }
-    });
-
-    // スクロールの有効化/無効化（Quantum Computerモード用）
-    const languageSelect = document.getElementById('language-select');
-
-    languageSelect.addEventListener('change', function() {
-        if (this.value === 'qc') {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'auto';
-        }
-    });
-
-    // 初期状態のスクロール設定
-    if (languageSelect.value === 'qc') {
-        document.body.style.overflow = 'hidden';
-    } else {
-        document.body.style.overflow = 'auto';
-    }
-
 });
